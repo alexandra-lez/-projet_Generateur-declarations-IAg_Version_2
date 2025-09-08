@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Étudiant (balisé) - Guide IAg</title>
+    <title>Profil personne étudiante (balisé) – Outil de déclaration IAg</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
     <div id="main-container">
         <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
-        <h1>Guide de Déclaration (Usage balisé)</h1>
+        <h1>Outil de déclaration (utilisation balisée)</h1>
         <details open class="section">
             <summary><h2><i class="fas fa-user-graduate"></i> 1. Informations sur la production</h2></summary>
             <div class="grid-inputs">
-                <div class="input-group"><label for="course-title-balises">Titre et sigle du cours</label><input type="text" id="course-title-balises" placeholder="ex: PHI-101..."></div>
+                <div class="input-group"><label for="course-title-balises">Titre et sigle du cours</label><input type="text" id="course-title-balises" placeholder="par exemple, ABC-123..."></div>
                 <div class="input-group"><label for="teacher-name-balises">Nom de la personne enseignante</label><input type="text" id="teacher-name-balises"></div>
-                <div class="input-group"><label for="session-date-balises">Session et date</label><input type="text" id="session-date-balises" placeholder="ex: Hiver 2025, 15 avril"></div>
+                <div class="input-group"><label for="session-date-balises">Session et date</label><input type="text" id="session-date-balises" placeholder="par exemple, Automne 2025"></div>
                 <div class="input-group"><label for="student-name-balises">Nom de la personne étudiante</label><input type="text" id="student-name-balises"></div>
-                <div class="input-group"><label for="production-title-balises">Titre de la production</label><input type="text" id="production-title-balises"></div>
+                <div class="input-group"><label for="production-title-balises">Titre de la production (par exemple, travail noté 1)</label><input type="text" id="production-title-balises"></div>
             </div>
         </details>
         <details open class="section">
@@ -28,29 +28,29 @@
         </details>
         <div class="section" id="tasks-section-balises">
             <h2><i class="fas fa-tasks"></i> 3. Usages déclarés</h2>
-            <p class="helper-text">Cochez les usages pour déclarer votre démarche. Cliquez sur <i class="fas fa-info-circle" style="color: var(--accent-dark);"></i> pour afficher un conseil de littératie.</p>
+            <p class="helper-text">Cochez les usages pour déclarer votre démarche. Cliquez sur <i class="fas fa-info-circle" style="color: var(--accent-dark);"></i> si vous désirez afficher suggestions ou point de vigilance concernant cet usage.</p>
         </div>
         <div class="section">
-            <h2><i class="fas fa-comment-dots"></i> 4. Réflexion sur la démarche (Facultatif)</h2>
+            <h2><i class="fas fa-comment-dots"></i> 4. Réflexion sur la démarche (section facultative)</h2>
             <div class="input-group" style="margin-top: 1rem;"><label for="reflection-process-balises">Expliquez comment l'IAg a servi votre apprentissage.</label><textarea id="reflection-process-balises" rows="4"></textarea></div>
             <div class="input-group" style="margin-top: 1rem;"><label for="reflection-limits-balises">Décrivez une limite de l'IAg et comment vous l'avez surmontée.</label><textarea id="reflection-limits-balises" rows="4"></textarea></div>
         </div>
         <div id="self-assessment-checklist-balises" class="section">
-            <h2><i class="fas fa-shield-alt"></i> 5. Checklist d'intégrité</h2>
-            <div><label><input type="checkbox" onchange="checkChecklistCompletion('balises')"> J'ai vérifié les informations factuelles générées.</label></div>
-            <div><label><input type="checkbox" onchange="checkChecklistCompletion('balises')"> J'ai retravaillé les textes pour assurer l'originalité.</label></div>
+            <h2><i class="fas fa-shield-alt"></i> 5. Liste de vérification (section facultative)</h2>
+            <div><label><input type="checkbox" onchange="checkChecklistCompletion('balises')"> J'ai utilisé les outils d’IAg pour obtenir une assistance en évitant de simplement de déléguer des tâches.</label></div>
+            <div><label><input type="checkbox" onchange="checkChecklistCompletion('balises')"> J'ai vérifié la pertinence et l’exactitude de toutes les informations générées.  </label></div>
             <div><label><input type="checkbox" onchange="checkChecklistCompletion('balises')"> Je n'ai soumis aucune information sensible.</label></div>
-            <div><label><input type="checkbox" onchange="checkChecklistCompletion('balises')"> Je suis l'unique responsable du contenu final.</label></div>
+            <div><label><input type="checkbox" onchange="checkChecklistCompletion('balises')"> Je suis consciente que je suis l'unique responsable du contenu final.</label></div>
         </div>
         <div class="section">
-            <h2><i class="fas fa-file-alt"></i> 6. Générer la Déclaration</h2>
+            <h2><i class="fas fa-file-alt"></i> 6. Générer la déclaration</h2>
             <button id="generate-btn-balises" onclick="generateOutputs('balises')" disabled><i class="fas fa-cogs"></i> Générer</button>
              <div class="output-container">
                 <div class="output-header"><h3>Déclaration pour annexe</h3><button class="copy-btn" onclick="copyToClipboard('output-balises', this)">Copier</button></div>
                 <textarea id="output-balises" class="output-textarea" readonly></textarea>
             </div>
             <div class="output-container">
-                <div class="output-header"><h3>Références bibliographiques</h3><button class="copy-btn" onclick="copyToClipboard('bibliography-output-balises', this)">Copier</button></div>
+                <div class="output-header"><h3>Références </h3><button class="copy-btn" onclick="copyToClipboard('bibliography-output-balises', this)">Copier</button></div>
                 <textarea id="bibliography-output-balises" class="output-textarea" readonly></textarea>
             </div>
         </div>
