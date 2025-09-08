@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide de Déclaration IAg</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <div id="main-container">
+        <div id="profile-selection-view">
+            <h1>Guide de Déclaration et de Littératie IAg</h1>
+            <p class="helper-text" style="text-align: left; margin-bottom: 2rem;">
+                Cet outil est conçu pour vous aider à déclarer l'utilisation de l'intelligence artificielle générative (IAg) de manière transparente et éthique, que vous soyez enseignant(e), chercheur(-euse) ou étudiant(e).
+            </p>
+            <h2><i class="fas fa-user-check"></i> Choisissez votre profil</h2>
+            <div class="profile-cards">
+                <a href="enseignant.html" class="profile-card">
+                    <div class="profile-icon"><i class="fas fa-chalkboard-user"></i></div>
+                    <h3>Personne enseignante</h3>
+                    <p>Déclarez les usages de l'IAg dans la préparation de vos cours et définissez un cadre pour vos étudiants.</p>
+                </a>
+                 <a href="recherche.html" class="profile-card">
+                    <div class="profile-icon"><i class="fas fa-flask"></i></div>
+                    <h3>Chercheur / Chercheuse</h3>
+                    <p>Documentez l'utilisation de l'IAg dans vos projets de recherche selon la taxonomie GAIDeT.</p>
+                </a>
+                <a href="etudiant-balise.html" class="profile-card">
+                    <div class="profile-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>Personne étudiante<br>(Usage balisé)</h3>
+                    <p>Déclarez vos usages si votre enseignant(e) a fourni un cadre (niveaux 0 à 4).</p>
+                </a>
+                 <a href="etudiant-sans-balise.html" class="profile-card">
+                    <div class="profile-icon"><i class="fas fa-user-pen"></i></div>
+                    <h3>Personne étudiante<br>(Usage non balisé)</h3>
+                    <p>Déclarez vos usages de manière descriptive si aucun cadre spécifique n'a été fourni.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
