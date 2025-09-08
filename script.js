@@ -13,7 +13,7 @@ const teacherTasksData = {
     "Communication et tâches administratives": ["Rédiger des messages pour des forums, courriels", "Assister à la formulation de rétroactions", "Synthétiser des articles pour le développement professionnel"]
 };
 const gaidetTaxonomyData = {
-    "Conceptualisation": ["Génération d'idées", "Définition de l'objectif de recherche", "Formulation des questions et hypothèses de recherche", "Évaluation de la faisabilité et des risques", "Test d'hypothèse préliminaire"],
+    "Conceptualisation": ["Génération idées", "Définition objectif de recherche", "Formulation des questions et hypothèses de recherche", "Évaluation de la faisabilité et des risques", "Test hypothèse préliminaire"],
     "Revue de littérature": ["Recherche et systématisation de la littérature", "Rédaction de la revue de littérature", "Analyse des tendances du marché et/ou de l'environnement des brevets", "Évaluation de la nouveauté de la recherche et identification des lacunes"],
     "Méthodologie": ["Conception de la recherche", "Développement de protocoles expérimentaux ou de recherche", "Sélection des méthodes de recherche"],
     "Développement logiciel et automatisation": ["Génération de code", "Optimisation du code", "Automatisation des processus", "Création d'algorithmes pour l'analyse de données"],
