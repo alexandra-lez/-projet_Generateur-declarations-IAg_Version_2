@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Enseignant - Guide IAg</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <div id="main-container">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+        <h1>Déclaration pour Personne Enseignante</h1>
+        <details open class="section">
+            <summary><h2><i class="fas fa-chalkboard"></i> 1. Informations sur le cours</h2></summary>
+            <div class="grid-inputs">
+                <div class="input-group"><label for="teacher-name-teacher">Nom de la personne enseignante</label><input type="text" id="teacher-name-teacher"></div>
+                <div class="input-group"><label for="course-title-teacher">Titre et sigle du cours</label><input type="text" id="course-title-teacher" placeholder="ex: DID-123..."></div>
+                <div class="input-group"><label for="session-date-teacher">Session</label><input type="text" id="session-date-teacher" placeholder="ex: Automne 2025"></div>
+            </div>
+        </details>
+        <details open class="section">
+            <summary><h2><i class="fas fa-robot"></i> 2. Outils d'IAg utilisés</h2></summary>
+            <div id="ai-tools-container-teacher"></div>
+            <button onclick="addAiToolEntry('teacher')" class="button-secondary"><i class="fas fa-plus"></i> Ajouter un outil</button>
+        </details>
+        
+        <details open class="section">
+            <summary><h2><i class="fas fa-sitemap"></i> 3. Cadre d'utilisation pour les étudiant(e)s</h2></summary>
+            <p class="helper-text">Sélectionnez le niveau d'utilisation que vous autorisez dans votre cours. Cette information sera incluse dans la déclaration pour votre plan de cours.</p>
+            <div class="policy-options" id="teacher-policy-choice">
+                <label><input type="radio" name="student-level" value="0"> Niveau 0 : Interdit</label>
+                <label><input type="radio" name="student-level" value="1"> Niveau 1 : Limité</label>
+                <label><input type="radio" name="student-level" value="2"> Niveau 2 : Guidé</label>
+                <label><input type="radio" name="student-level" value="3"> Niveau 3 : Balisé</label>
+                <label><input type="radio" name="student-level" value="4"> Niveau 4 : Libre</label>
+            </div>
+        </details>
+
+        <div class="section" id="tasks-section-teacher">
+            <h2><i class="fas fa-tasks"></i> 4. Usages Pédagogiques Déclarés</h2>
+            <p class="helper-text">Cochez les usages de l'IAg dans votre pratique enseignante. Cliquez sur <i class="fas fa-info-circle" style="color: var(--accent-dark);"></i> pour un conseil de littératie.</p>
+            <!-- Predefined tasks will be built here by JS -->
+            
+            <h3>Autres usages</h3>
+            <div id="dynamic-tasks-container-teacher"></div>
+            <button onclick="addDynamicTask('teacher', document.getElementById('dynamic-tasks-container-teacher'), 'teacher')" class="button-secondary"><i class="fas fa-plus"></i> Ajouter un autre usage</button>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-comment-dots"></i> 5. Réflexion sur la démarche (Facultatif)</h2>
+            <div class="input-group" style="margin-top: 1rem;">
+                <label for="reflection-process-teacher">Comment l'IAg a-t-elle soutenu vos objectifs pédagogiques ?</label>
+                <textarea id="reflection-process-teacher" rows="4"></textarea>
+            </div>
+            <div class="input-group" style="margin-top: 1rem;">
+                <label for="reflection-limits-teacher">Quelle limite de l'IAg avez-vous rencontrée et comment l'avez-vous gérée ?</label>
+                <textarea id="reflection-limits-teacher" rows="4"></textarea>
+            </div>
+            <div class="input-group" style="margin-top: 1rem;">
+                <label for="reflection-skill-teacher">Comment cette utilisation de l'IAg modélise-t-elle une pratique éthique pour vos étudiant(e)s ?</label>
+                <textarea id="reflection-skill-teacher" rows="4"></textarea>
+            </div>
+        </div>
+        <div id="self-assessment-checklist-teacher" class="section">
+            <h2><i class="fas fa-shield-alt"></i> 6. Checklist d'intégrité</h2>
+            <div><label><input type="checkbox" onchange="checkChecklistCompletion('teacher')"> J'ai vérifié l'exactitude des informations utilisées dans mon matériel de cours.</label></div>
+            <div><label><input type="checkbox" onchange="checkChecklistCompletion('teacher')"> J'ai adapté le contenu pour qu'il soit pertinent au contexte de mon cours.</label></div>
+            <div><label><input type="checkbox" onchange="checkChecklistCompletion('teacher')"> Je suis responsable de la qualité et de la validité du matériel pédagogique final.</label></div>
+        </div>
+        <div class="section">
+            <h2><i class="fas fa-file-alt"></i> 7. Générer la Déclaration</h2>
+            <button id="generate-btn-teacher" onclick="generateOutputs('teacher')" disabled><i class="fas fa-cogs"></i> Générer</button>
+            <div class="output-container">
+                <div class="output-header"><h3>Déclaration pour plan de cours</h3><button class="copy-btn" onclick="copyToClipboard('output-teacher', this)">Copier</button></div>
+                <textarea id="output-teacher" class="output-textarea" readonly></textarea>
+            </div>
+            <div class="output-container">
+                <div class="output-header"><h3>Références bibliographiques</h3><button class="copy-btn" onclick="copyToClipboard('bibliography-output-teacher', this)">Copier</button></div>
+                <textarea id="bibliography-output-teacher" class="output-textarea" readonly></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
