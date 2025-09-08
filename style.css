@@ -1,16 +1,16 @@
 :root {
-  --primary-color: #007A33; /* Vert UdeS plus saturé */
-  --primary-dark: #005A24;
-  --primary-light: #F0F7F2; /* Vert très pâle pour fonds */
-  --accent-color: #FFC72C; /* Jaune doré */
-  --accent-dark: #E6B327;
-  --text-color: #212529;
+  --primary-color: #006747; /* A deeper, less saturated green */
+  --primary-dark: #004d33;
+  --primary-light: #e6f0eb;
+  --accent-color: #f39c12; /* A warm orange/yellow */
+  --accent-dark: #d35400;
+  --text-color: #343a40; /* Dark grey, not pure black */
   --light-text-color: #6c757d;
-  --bg-color: #f8f9fa;
+  --bg-color: #f7f9fc; /* Very light blueish grey */
   --card-bg: #ffffff;
-  --border-color: #dee2e6;
-  --shadow-light: rgba(0, 0, 0, 0.05);
-  --shadow-medium: rgba(0, 0, 0, 0.1);
+  --border-color: #e9ecef;
+  --shadow-light: rgba(40, 50, 60, 0.05);
+  --shadow-medium: rgba(40, 50, 60, 0.1);
 }
 
 *, *::before, *::after {
@@ -23,7 +23,7 @@ body {
   color: var(--text-color);
   margin: 0;
   padding: 2rem;
-  line-height: 1.6;
+  line-height: 1.7;
   font-size: 16px;
   min-height: 100vh;
   display: flex;
@@ -36,20 +36,20 @@ body {
 #main-container {
   max-width: 950px;
   width: 100%;
-  margin: 0 auto;
+  margin: 2rem 0;
   background-color: var(--card-bg);
   padding: 2.5rem 3.5rem;
   border-radius: 16px;
-  box-shadow: 0 8px 32px var(--shadow-medium);
+  box-shadow: 0 10px 40px var(--shadow-medium);
   position: relative;
   overflow: hidden;
-  border-top: 8px solid var(--primary-color);
+  border: 1px solid var(--border-color);
 }
 
 h1 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 2.5em;
+  font-size: 2.4em;
   color: var(--primary-dark);
   text-align: center;
   margin-top: 1.5rem;
@@ -60,9 +60,9 @@ h1 {
 h2 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  font-size: 1.8em;
+  font-size: 1.7em;
   color: var(--primary-dark);
-  border-bottom: 2px solid var(--primary-light);
+  border-bottom: 2px solid var(--primary-color);
   padding-bottom: 0.8rem;
   margin-top: 3rem;
   margin-bottom: 2rem;
@@ -99,9 +99,9 @@ h3 {
 }
 .helper-text {
   font-size: 0.95em;
-  color: var(--light-text-color);
+  color: var(--text-color);
   background-color: var(--primary-light);
-  padding: 1rem;
+  padding: 1.2rem;
   border-radius: 8px;
   border-left: 4px solid var(--primary-color);
 }
@@ -131,7 +131,7 @@ textarea:focus, input[type="text"]:focus, select:focus {
     justify-content: space-between;
     align-items: center;
     background-color: #f1f3f5;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     border: 1px solid var(--border-color);
@@ -147,7 +147,7 @@ textarea.output-textarea {
   height: 350px;
   resize: vertical;
   font-family: 'Source Code Pro', monospace;
-  background-color: #f8f9fa;
+  background-color: #fdfdfd;
   color: var(--text-color);
   padding: 1.5rem;
   white-space: pre-wrap;
@@ -159,36 +159,39 @@ textarea.output-textarea {
 textarea.output-textarea#bibliography-output { height: 180px; }
 
 button {
-  padding: 0.9rem 2rem;
+  padding: 0.9rem 2.5rem;
   background-color: var(--primary-color);
   color: #fff;
   border: none;
   cursor: pointer;
   margin-top: 1rem;
   border-radius: 50px;
-  font-size: 1.05em;
+  font-size: 1em;
   font-weight: 700;
   font-family: 'Montserrat', sans-serif;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 button:hover {
   background-color: var(--primary-dark);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 button:disabled {
   background: #adb5bd;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 .button-secondary {
-  background-color: #f8f9fa;
+  background-color: #fff;
   color: var(--text-color);
   border: 1px solid var(--border-color);
   font-size: 0.9em;
   padding: 0.6rem 1.2rem;
 }
-.button-secondary:hover { background-color: #e9ecef; }
+.button-secondary:hover { background-color: #f8f9fa; border-color: #adb5bd; }
 .button-danger {
   background-color: transparent;
   color: var(--light-text-color);
@@ -211,12 +214,12 @@ button:disabled {
     cursor: pointer;
     transition: all 0.2s ease;
 }
-.copy-btn:hover { background-color: var(--primary-light); color: var(--primary-dark); }
+.copy-btn:hover { background-color: var(--primary-light); color: var(--primary-dark); border-color: var(--primary-color);}
 
-details.level-details > summary, details.gaidet-category > summary {
+details.gaidet-category > summary {
   cursor: pointer;
   font-weight: 600;
-  font-size: 1.5em;
+  font-size: 1.4em;
   font-family: 'Montserrat', sans-serif;
   color: var(--primary-dark);
   margin-top: 2rem;
@@ -227,16 +230,16 @@ details.level-details > summary, details.gaidet-category > summary {
   align-items: center;
   justify-content: space-between;
 }
-details.level-details > summary:hover, details.gaidet-category > summary:hover {
+details.gaidet-category > summary:hover {
   background-color: var(--primary-light);
 }
-details.level-details > summary::before, details.gaidet-category > summary::before {
+details.gaidet-category > summary::before {
     font-family: "Font Awesome 6 Free"; content: "\f078";
     font-weight: 900; margin-right: 1rem;
     color: var(--primary-color);
     transition: transform 0.3s ease;
 }
-details.level-details[open] > summary::before, details.gaidet-category[open] > summary::before {
+details.gaidet-category[open] > summary::before {
   transform: rotate(-180deg);
 }
 
@@ -253,13 +256,13 @@ details.level-details[open] > summary::before, details.gaidet-category[open] > s
   transform: scale(1.3);
   accent-color: var(--primary-color);
 }
-.prompt-container { margin-top: 1rem; display: none; padding-left: 2.2rem; border-left: 2px solid var(--primary-light); }
+.prompt-container { margin-top: 1rem; display: none; padding-left: 2.2rem; border-left: 2px solid var(--primary-light); animation: fadeIn 0.4s ease; }
 
 .tip-icon { color: var(--accent-color); cursor: pointer; font-size: 1.2em; margin-left: auto; padding: 0 0.5rem; transition: color 0.2s ease; }
 .tip-icon:hover { color: var(--accent-dark); }
 .contextual-tip {
     display: none;
-    background-color: #FFFBEB;
+    background-color: #fffbeb;
     color: #573a00;
     padding: 1.2rem;
     border-radius: 8px;
@@ -310,7 +313,7 @@ a.profile-card {
     border-radius: 12px;
     box-shadow: 0 4px 16px var(--shadow-light);
     padding: 2.5rem;
-    text-align: center; /* Center content */
+    text-align: center;
     text-decoration: none;
     color: var(--text-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
