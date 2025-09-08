@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Recherche - Guide IAg</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <div id="main-container">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+        <h1>Déclaration pour la Recherche</h1>
+       <details open class="section">
+           <summary><h2><i class="fas fa-book-open"></i> 1. Informations sur le projet</h2></summary>
+           <div class="grid-inputs">
+               <div class="input-group"><label for="researcher-name-researcher">Nom du chercheur / de la chercheuse</label><input type="text" id="researcher-name-researcher"></div>
+               <div class="input-group"><label for="project-title-researcher">Titre du projet / article</label><input type="text" id="project-title-researcher"></div>
+               <div class="input-group"><label for="date-researcher">Date de la déclaration</label><input type="text" id="date-researcher" placeholder="ex: 8 septembre 2025"></div>
+           </div>
+       </details>
+        <details open class="section">
+           <summary><h2><i class="fas fa-robot"></i> 2. Outils d'IAg utilisés</h2></summary>
+           <div id="ai-tools-container-researcher"></div>
+           <button onclick="addAiToolEntry('researcher')" class="button-secondary"><i class="fas fa-plus"></i> Ajouter un outil</button>
+       </details>
+        <div class="section" id="tasks-section-researcher">
+           <h2><i class="fas fa-tasks"></i> 3. Usages en recherche déclarés (Taxonomie GAIDeT)</h2>
+           <p class="helper-text">Cochez les usages pour déclarer votre démarche. Cliquez sur <i class="fas fa-info-circle" style="color: var(--accent-dark);"></i> pour afficher un conseil de littératie.</p>
+           <!-- Predefined tasks for researcher will be built here by JS -->
+            <h3>Autres usages</h3>
+           <div id="dynamic-tasks-container-researcher"></div>
+           <button onclick="addDynamicTask('researcher', document.getElementById('dynamic-tasks-container-researcher'), 'researcher')" class="button-secondary"><i class="fas fa-plus"></i> Ajouter un autre usage</button>
+       </div>
+        <div class="section">
+           <h2><i class="fas fa-comment-dots"></i> 4. Réflexion sur la démarche (Facultatif)</h2>
+           <div class="input-group" style="margin-top: 1rem;"><label for="reflection-process-researcher">Comment l'IAg a-t-elle influencé votre processus de recherche ?</label><textarea id="reflection-process-researcher" rows="4"></textarea></div>
+           <div class="input-group" style="margin-top: 1rem;"><label for="reflection-limits-researcher">Quelles mesures avez-vous prises pour valider les informations et garantir l'originalité de votre contribution ?</label><textarea id="reflection-limits-researcher" rows="4"></textarea></div>
+       </div>
+        <div id="self-assessment-checklist-researcher" class="section">
+           <h2><i class="fas fa-shield-alt"></i> 5. Checklist d'intégrité</h2>
+           <div><label><input type="checkbox" onchange="checkChecklistCompletion('researcher')"> J'ai validé de manière critique toutes les informations factuelles et les analyses générées.</label></div>
+           <div><label><input type="checkbox" onchange="checkChecklistCompletion('researcher')"> J'ai retravaillé et intégré le contenu pour que la contribution intellectuelle finale soit la mienne.</label></div>
+           <div><label><input type="checkbox" onchange="checkChecklistCompletion('researcher')"> Je me suis assuré(e) que l'utilisation de l'IA respecte les normes éthiques de mon domaine.</label></div>
+           <div><label><input type="checkbox" onchange="checkChecklistCompletion('researcher')"> Je suis l'unique responsable des conclusions et du contenu de la recherche.</label></div>
+       </div>
+        <div class="section">
+           <h2><i class="fas fa-file-alt"></i> 6. Générer la Déclaration</h2>
+           <button id="generate-btn-researcher" onclick="generateOutputs('researcher')" disabled><i class="fas fa-cogs"></i> Générer</button>
+            <div class="output-container">
+               <div class="output-header"><h3>Déclaration pour manuscrit/projet</h3><button class="copy-btn" onclick="copyToClipboard('output-researcher', this)">Copier</button></div>
+               <textarea id="output-researcher" class="output-textarea" readonly></textarea>
+           </div>
+           <div class="output-container">
+               <div class="output-header"><h3>Références bibliographiques</h3><button class="copy-btn" onclick="copyToClipboard('bibliography-output-researcher', this)">Copier</button></div>
+               <textarea id="bibliography-output-researcher" class="output-textarea" readonly></textarea>
+           </div>
+       </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
