@@ -1,6 +1,6 @@
 // DATA | Version 2, Alexandra Lez, 7 septembre 2025
 const studentTasksData = {
-  "NIVEAU 1 : Utilisation limitée": { domains: { "Domaine disciplinaire": ["S'inspirer", "Générer des idées", "Explorer un sujet pour mieux le comprendre", "Générer du matériel pour son étude"], "Domaine des langues": ["Identifier ses erreurs et se les faire expliquer", "Reformuler un texte", "Générer un plan pour aider à structurer un texte", "Traduire un texte"]}},
+  "NIVEAU 1 : Utilisation limitée": { domains: { "Domaine disciplinaire": ["Inspiration", "Générer des idées", "Explorer un sujet pour mieux le comprendre", "Générer du matériel pour son étude"], "Domaine des langues": ["Identifier ses erreurs et se les faire expliquer", "Reformuler un texte", "Générer un plan pour aider à structurer un texte", "Traduire un texte"]}},
   "NIVEAU 2 : Utilisation guidée": { domains: { "": ["Analyser des contenus", "Obtenir une rétroaction", "Évaluer la qualité de son travail à partir de critères", "Demander à être confronté relativement à ses idées, à sa démarche", "Diriger les processus de résolution de problèmes"]}},
   "NIVEAU 3 : Utilisation balisée": { domains: { "": ["Résumer ou rédiger des parties d'un texte", "Générer un texte ou un modèle d'une production et l'adapter", "Réaliser des calculs mathématiques", "Produire du code informatique", "Résoudre des problèmes complexes", "Répondre à une question", "Générer des images, ou contenus multimédias"]}},
   "NIVEAU 4 : Utilisation libre": { domains: { "": [] }}
@@ -81,7 +81,7 @@ const contextualTips = {
 
   // Étudiant avec balises
     // NIVEAU 1
-    "S'inspirer": { title: "Bonne pratique", content: "Utilisez l'IA pour explorer différents angles d'un sujet, mais assurez-vous de développer votre propre perspective originale." },
+    "Inspiration": { title: "Bonne pratique", content: "Utilisez l'IA pour explorer différents angles d'un sujet, mais assurez-vous de développer votre propre perspective originale." },
     "Générer des idées": { title: "Bonne pratique", content: "L'IA est un excellent partenaire pour un remue-méninges. Traitez ses suggestions comme un point de départ à critiquer et à enrichir." },
     "Explorer un sujet pour mieux le comprendre": { title: "Point de vigilance (Exactitude)", content: "L'IA peut simplifier à l'excès ou commettre des erreurs. Validez toujours les informations importantes avec les sources vues en cours ou des références académiques." },
     "Générer du matériel pour son étude": { title: "Bonne pratique", content: "Créez des aide-mémoires, des cartes éclair (*flashcards*) ou des quiz personnalisés pour réviser la matière de manière active." },
