@@ -16,7 +16,7 @@ const gaidetTaxonomyData = {
     "Conceptualisation": ["Génération idées", "Définition objectif de recherche", "Formulation des questions et hypothèses de recherche", "Évaluation de la faisabilité et des risques", "Test hypothèse préliminaire"],
     "Revue de littérature": ["Recherche et systématisation de la littérature", "Rédaction de la revue de littérature", "Analyse des tendances du marché  ou des environnements des brevets", "Évaluation de la nouveauté de la recherche et identification des lacunes"],
     "Méthodologie": ["Conception de la recherche", "Développement de protocoles expérimentaux ou de recherche", "Sélection des méthodes de recherche"],
-    "Développement logiciel et automatisation": ["Génération de code", "Optimisation du code", "Automatisation des processus", "Création algorithmes pour l'analyse de données"],
+    "Développement logiciel et automatisation": ["Génération de code", "Optimisation du code", "Automatisation des processus", "Création algorithmes pour analyse de données"],
     "Gestion des données": ["Collecte de données", "Validation (évaluation de la qualité et de la fiabilité des données)", "Nettoyage des données", "Conservation et organisation des données", "Analyse des données", "Visualisation", "Test de reproductibilité"],
     "Rédaction et édition": ["Génération de texte", "Relecture et édition", "Synthèse de texte", "Formulation des conclusions", "Adaptation du ton émotionnel", "Traduction", "Reformatage"],
     "Revue éthique": ["Analyse des biais et des discriminations potentielles", "Analyse des risques éthiques", "Suivi de la conformité aux normes éthiques", "Suivi de la confidentialité des données"],
