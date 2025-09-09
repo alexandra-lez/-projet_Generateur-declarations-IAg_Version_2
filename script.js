@@ -26,7 +26,7 @@ const contextualTips = {
     // General
     'Usage non spécifié': { title: "Point de vigilance : responsabilité accrue", content: "Pour tout usage non listé, la responsabilité de la justification et du respect de l'intégrité académique vous incombe entièrement. Documentez bien votre processus." },
 
-    // Teacher
+    // Personne enseignante
     'Générer des plans de cours': { title: "Bonne pratique", content: "Utilisez l'IA pour générer une structure de base, mais assurez-vous de la personnaliser en y intégrant votre expertise, votre expérience, le contexte de votre cours et les besoins spécifiques de vos étudiantes et étudiants." },
     'Créer des exemples ou études de cas': { title: "Point de vigilance : authenticité", content: "Les exemples générés à l’aide d’une IAg peuvent être trop génériques. Adaptez-les pour qu'ils soient authentiques et pertinents pour le champ disciplinaire et le vécu de vos étudiantes et étudiants." },
     'Concevoir des activités pédagogiques': { title: "Bonne pratique", content: "Assurez-vous que chaque activité proposée par l’IAG que vous décidez de mettre en œuvre soit pertinente pour votre contexte et directement liée à un objectif d’apprentissage précis de votre cours." },
@@ -45,7 +45,7 @@ const contextualTips = {
     'Générer des explications alternatives pour des concepts difficiles': { title: "Bonne pratique : flexibilité", content: "L'IAg peut proposer des analogies ou des métaphores variées pour un même concept. C'est un bon moyen d'aider les personnes étudiantes ayant différentes manières d’apprendre." },
     'Synthétiser des articles pour le développement professionnel': { title: "Point de vigilance : perte de nuance", content: "Un résumé effectué à l’aide d'un outil d’IAg est un point de départ. Toutefois, il demeure indispensable de lire et d’analyser attentivement le texte original afin de bien comprendre le sujet." },
 
-    // GAIDET / Researcher
+    // GAIDET / Chercheur
     'Génération idées': { title: "Bonne pratique", content: "Utilisez l'IAg pour la divergence (générer beaucoup d'idées), mais gardez le contrôle de la convergence (choisir, critiquer et affiner les meilleures)." },
     'Définition objectif de recherche': { title: "Point de vigilance", content: "L'IAg peut aider à clarifier un objectif, mais celui-ci doit découler de votre compréhension profonde du domaine et d'une lacune réelle dans les connaissances." },
     'Formulation des questions et hypothèses de recherche': { title: "Bonne pratique", content: "Les outils d’IAg s’avèrent très intéressants pour reformuler ou explorer des angles différents, mais, assurez-vous que l'hypothèse finale est testable, précise et pertinente pour votre projet." },
@@ -111,7 +111,7 @@ const contextualTips = {
 
   };
 
-// INITIALIZATION
+// Initialisation
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize AI tool entries for all profiles
     ['teacher', 'researcher', 'balises', 'sans-balises'].forEach(p => {
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateAllDropdowns();
 });
 
-// BUILDERS
+// Builders
 function buildTasksFromData(container, data, profile) {
     if (!container) return;
     Object.keys(data).forEach(category => {
@@ -210,7 +210,7 @@ function addDynamicTask(type, container = null, profile) {
     updateAllDropdowns();
 }
 
-// SHARED UI LOGIC
+// Logique interface
 function toggleTip(event) {
     const parent = event.target.closest('.task-item-content, .dynamic-task-item');
     parent.querySelector('.contextual-tip').style.display = (parent.querySelector('.contextual-tip').style.display === 'block') ? 'none' : 'block';
@@ -266,7 +266,7 @@ function copyToClipboard(elementId, button) {
     setTimeout(() => { button.textContent = 'Copier'; }, 2000);
 }
 
-// GENERATION LOGIC
+// Logique pour génération
 function generateOutputs(profile) {
     const declarationText = (profile === 'teacher') ? generateTeacherDeclaration()
                         : (profile === 'researcher') ? generateResearcherDeclaration()
