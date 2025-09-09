@@ -434,4 +434,3 @@ function generateResearcherDeclaration() {
     }
      return header + body + getReflectionText('researcher') + getIntegrityText('researcher');
 }
-
