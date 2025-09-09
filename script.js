@@ -26,7 +26,35 @@ const contextualTips = {
     // General
     'Usage non spécifié': { title: "Point de vigilance : responsabilité accrue", content: "Pour tout usage non listé, la responsabilité de la justification et du respect de l'intégrité académique vous incombe entièrement. Documentez bien votre processus." },
     
-    // Teacher
+    const contextualTipsForStudents = {
+    // NIVEAU 1 : Utilisation limitée
+    "S'inspirer": { title: "Bonne pratique : pensée divergente", content: "Utilisez l'IA pour générer un grand volume d'idées brutes (divergence), mais gardez le contrôle total sur le choix, la critique et l'affinage des meilleures pistes (convergence)." },
+    "Générer des idées": { title: "Bonne pratique : remue-méninges structuré", content: "Pour de meilleurs résultats, donnez un rôle à l'IA (ex: 'Agis comme un expert en marketing') et un cadre (ex: 'Propose 5 idées d'accroche pour un texte sur ce sujet')." },
+    "Explorer un sujet pour mieux le comprendre": { title: "Point de vigilance : validation des faits", content: "L'IA est un excellent point de départ pour explorer, mais elle peut simplifier ou se tromper. Validez toujours les informations importantes avec les sources fiables fournies dans votre cours." },
+    "Générer du matériel pour son étude": { title: "Bonne pratique : apprentissage actif", content: "Demandez à l'IA de créer des questions de révision, des quiz ou des cartes-éclair sur un texte que vous lui fournissez. C'est une excellente façon de tester activement vos connaissances." },
+    "Identifier ses erreurs et se les faire expliquer": { title: "Bonne pratique : tuteur personnel", content: "Lorsque l'IA corrige une de vos phrases, demandez-lui toujours : 'Pourquoi est-ce une erreur ?' et 'Quelle règle de grammaire s'applique ici ?'. Transformez la correction en leçon." },
+    "Reformuler un texte": { title: "Point de vigilance : votre voix d'auteur", content: "La reformulation peut améliorer la clarté, mais assurez-vous que le résultat final correspond toujours à votre style et à votre pensée. Ne copiez-collez jamais sans vous réapproprier le texte." },
+    "Générer un plan pour aider à structurer un texte": { title: "Bonne pratique : squelette de travail", content: "Considérez le plan généré comme une suggestion. Votre travail consiste à le réorganiser, le fusionner et l'adapter pour qu'il serve parfaitement votre propre argumentaire." },
+    "Traduire un texte": { title: "Point de vigilance : jargon et nuances", content: "Les traducteurs IA sont puissants, mais peuvent échouer sur le jargon technique spécifique à un domaine ou sur les nuances culturelles. Une révision attentive par un humain est essentielle." },
+
+    // NIVEAU 2 : Utilisation guidée
+    "Analyser des contenus": { title: "Bonne pratique : seconde lecture", content: "Soumettez un texte et demandez à l'IA d'en identifier les arguments principaux, le ton ou les thèmes. Utilisez sa réponse pour valider ou remettre en question votre propre analyse initiale." },
+    "Obtenir une rétroaction": { title: "Point de vigilance : rétroaction générale vs experte", content: "L'IA donne une bonne rétroaction sur la structure et la clarté générale, mais elle ne remplace pas les conseils de votre enseignant(e), qui connaît les objectifs précis du travail et les subtilités du domaine." },
+    "Évaluer la qualité de son travail à partir de critères": { title: "Bonne pratique : auto-évaluation formative", content: "Donnez à l'IA la grille d'évaluation de votre travail avec votre production. Demandez-lui de vous évaluer critère par critère. C'est un excellent moyen d'identifier des faiblesses avant la remise." },
+    "Demander à être confronté relativement à ses idées, à sa démarche": { title: "Bonne pratique : partenaire de débat", content: "Renforcez votre argumentation en demandant à l'IA de 'jouer l'avocat du diable' ou de 'trouver trois contre-arguments à mon idée principale'. C'est un excellent test de robustesse." },
+    "Diriger les processus de résolution de problèmes": { title: "Point de vigilance : rester le pilote", content: "Ne demandez pas la solution finale. Demandez plutôt : 'Quelle serait la première étape ?' ou 'Quelle formule devrais-je utiliser ici ?'. Gardez le contrôle du raisonnement." },
+
+    // NIVEAU 3 : Utilisation balisée
+    "Résumer ou rédiger des parties d'un texte": { title: "Point de vigilance : responsabilité totale", content: "Dès que l'IA rédige, votre travail de vérification, de réécriture et d'intégration doit être maximal. Le texte final est le vôtre, et vous en êtes 100% responsable." },
+    "Générer un texte ou un modèle d'une production et l'adapter": { title: "Point de vigilance : l'adaptation est cruciale", content: "Un modèle généré par l'IA doit être un squelette, pas le produit fini. Le travail d'adaptation que vous effectuez doit être substantiel et visible." },
+    "Réaliser des calculs mathématiques": { title: "Bonne pratique : comprendre les étapes", content: "Utilisez l'IA pour vérifier un résultat ou pour vous montrer les étapes d'une résolution. Assurez-vous de comprendre la logique derrière chaque étape, pas seulement la réponse finale." },
+    "Produire du code informatique": { title: "Point de vigilance : fonctionnalité vs qualité", content: "Le code généré peut fonctionner, mais il n'est pas toujours optimisé, sécurisé ou bien commenté. Vous devez comprendre ce que fait chaque ligne avant de l'intégrer." },
+    "Résoudre des problèmes complexes": { title: "Point de vigilance : une solution parmi d'autres", content: "La solution proposée par l'IA n'est qu'une des voies possibles. Votre expertise consiste à l'évaluer, la critiquer et, si nécessaire, à chercher des approches alternatives." },
+    "Répondre à une question": { title: "Point de vigilance : sources fantômes", content: "Vérifiez systématiquement chaque information factuelle (noms, dates, statistiques). L'IA est connue pour 'halluciner' et inventer des faits ou des références qui n'existent pas." },
+    "Générer des images, ou contenus multimédias": { title: "Bonne pratique : l'art du 'prompt'", content: "Plus votre requête (prompt) est détaillée, meilleur sera le résultat. Décrivez le style, les couleurs, l'ambiance et la composition de l'image souhaitée. Pensez à vérifier les droits d'utilisation." }
+};
+  
+  // Teacher
     'Générer des plans de cours': { title: "Bonne pratique", content: "Utilisez l'IA pour générer une structure de base, mais assurez-vous de la personnaliser en y intégrant votre expertise, votre expérience, le contexte de votre cours et les besoins spécifiques de vos étudiantes et étudiants." },
     'Créer des exemples ou études de cas': { title: "Point de vigilance : authenticité", content: "Les exemples générés à l’aide d’une IAg peuvent être trop génériques. Adaptez-les pour qu'ils soient authentiques et pertinents pour le champ disciplinaire et le vécu de vos étudiantes et étudiants." },
     'Concevoir des activités pédagogiques': { title: "Bonne pratique", content: "Assurez-vous que chaque activité proposée par l’IAG que vous décidez de mettre en œuvre soit pertinente pour votre contexte et directement liée à un objectif d’apprentissage précis de votre cours." },
