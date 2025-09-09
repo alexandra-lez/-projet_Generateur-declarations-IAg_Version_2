@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. Variables de Couleur et Configuration Globale
+   1. Variables de couleur et configuration globale - Version prototype 2.0
    ========================================================================== */
 
 :root {
@@ -46,7 +46,7 @@
 }
 
 /* ==========================================================================
-   2. Styles de Base et Réinitialisation
+   2. Styles de base et réinitialisation
    ========================================================================== */
 
 *,
@@ -100,7 +100,7 @@ body {
 }
 
 /* ==========================================================================
-   3. Conteneur Principal et Mise en Page
+   3. Conteneur principal et mise en page
    ========================================================================== */
 
 @keyframes fadeInFromTop {
@@ -183,7 +183,7 @@ h3 {
 }
 
 /* ==========================================================================
-   5. Formulaires et Champs de Saisie
+   5. Formulaires et champs de saisie
    ========================================================================== */
 
 .grid-inputs {
@@ -420,7 +420,7 @@ button:disabled {
 }
 
 /* ==========================================================================
-   7. Composants Spécifiques
+   7. Composants spécifiques
    ========================================================================== */
 
 /* --- Conteneur de Sortie --- */
@@ -536,7 +536,7 @@ details.gaidet-category[open] > summary::before {
   font-size: 1.05em;
 }
 
-/* --- Boîtes de message et astuces --- */
+/* --- Boîtes de message  --- */
 .helper-text {
   font-size: 1em;
   color: var(--text-color);
@@ -579,7 +579,7 @@ details.gaidet-category[open] > summary::before {
   color: #573A00;
 }
 
-/* --- Vue de Sélection de Profil --- */
+/* --- Vue de sélection de profil --- */
 #profile-selection-view {
   text-align: center;
   padding: 2rem 0;
@@ -682,7 +682,7 @@ details.gaidet-category[open] > summary::before {
 
 
 /* ==========================================================================
-   8. Animations et Utilitaires
+   8. Animations et utilitaires
    ========================================================================== */
 
 @keyframes fadeIn {
@@ -715,7 +715,7 @@ details.gaidet-category[open] > summary::before {
 }
 
 /* ==========================================================================
-   9. Requêtes Média (Responsive)
+   9. Requêtes média 
    ========================================================================== */
 
 @media (max-width: 768px) {
