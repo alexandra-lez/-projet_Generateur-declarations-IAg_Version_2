@@ -78,7 +78,8 @@ const contextualTips = {
     'Identification des tendances': { title: "Bonne pratique", content: "L'IAg peut identifier des tendances dans de grands ensembles de données (par exemple, résultats de recherche), mais c'est à vous d'interpréter leur signification." },
     'Recommandations': { title: "Point de vigilance", content: "Les recommandations générées par des outils d’IAg sont basées sur des modèles statistiques. Elles doivent être évaluées de manière critique à la lumière de votre expertise et des objectifs de votre recherche." },
     'Soutien à la publication': { title: "Bonne pratique", content: " L’IAg peut être très utile pour rédiger une lettre de présentation ou des réponses aux évaluateurs. Cependant, il est important de toujours personnaliser le contenu pour qu’il soit spécifique et sincère." },
-// AJOUTS POUR LES ÉTUDIANTS
+
+  // AJOUTS POUR LES ÉTUDIANTS
 
     // NIVEAU 1
     "S'inspirer": { 
