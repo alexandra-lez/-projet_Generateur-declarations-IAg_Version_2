@@ -78,6 +78,65 @@ const contextualTips = {
     'Identification des tendances': { title: "Bonne pratique", content: "L'IAg peut identifier des tendances dans de grands ensembles de données (par exemple, résultats de recherche), mais c'est à vous d'interpréter leur signification." },
     'Recommandations': { title: "Point de vigilance", content: "Les recommandations générées par des outils d’IAg sont basées sur des modèles statistiques. Elles doivent être évaluées de manière critique à la lumière de votre expertise et des objectifs de votre recherche." },
     'Soutien à la publication': { title: "Bonne pratique", content: " L’IAg peut être très utile pour rédiger une lettre de présentation ou des réponses aux évaluateurs. Cependant, il est important de toujours personnaliser le contenu pour qu’il soit spécifique et sincère." },
+// AJOUTS POUR LES ÉTUDIANTS
+
+    // NIVEAU 1
+    "S'inspirer": { 
+        title: "Bonne pratique", 
+        content: "Utilisez l'IA pour explorer différents angles d'un sujet, mais assurez-vous de développer votre propre perspective originale." 
+    },
+    "Générer des idées": { 
+        title: "Bonne pratique", 
+        content: "L'IA est un excellent point de départ pour le remue-méninges. Notez les idées qui vous semblent les plus pertinentes et approfondissez-les vous-même." 
+    },
+    "Explorer un sujet pour mieux le comprendre": { 
+        title: "Point de vigilance : vérification des faits", 
+        content: "L'IA peut parfois fournir des informations incorrectes ou obsolètes. Toujours croiser les sources avec des documents académiques fiables." 
+    },
+    "Générer du matériel pour son étude": { 
+        title: "Point de vigilance : appropriation du contenu", 
+        content: "Assurez-vous de bien comprendre le matériel généré. Le simple fait de le lire ne suffit pas; vous devez être capable de l'expliquer dans vos propres mots." 
+    },
+    "Identifier ses erreurs et se les faire expliquer": { 
+        title: "Bonne pratique", 
+        content: "Soumettez un de vos textes à une IA pour qu'elle identifie les erreurs de grammaire ou de syntaxe. Demandez des explications claires pour ne pas répéter ces erreurs." 
+    },
+    "Reformuler un texte": { 
+        title: "Point de vigilance : plagiat", 
+        content: "La reformulation par une IA peut s'apparenter à du plagiat si vous ne citez pas la source originale. Utilisez cette fonction pour mieux comprendre un passage, puis rédigez votre propre version." 
+    },
+    "Générer un plan pour aider à structurer un texte": { 
+        title: "Bonne pratique", 
+        content: "Un plan généré par une IA est une excellente base. Adaptez-le en fonction de votre argumentation et des exigences de votre travail." 
+    },
+    "Traduire un texte": { 
+        title: "Point de vigilance : nuances culturelles et terminologiques", 
+        content: "Les outils de traduction automatique sont utiles, mais peuvent manquer de précision pour le jargon technique ou les expressions idiomatiques. Une révision est toujours nécessaire." 
+    },
+    
+    // ... (Ajoutez ici les conseils pour les NIVEAUX 2 et 3) ...
+
+    // NIVEAU 2
+    "Analyser des contenus": {
+        title: "Bonne pratique",
+        content: "Utilisez l'IA pour identifier les thèmes principaux ou les arguments d'un texte, mais l'analyse critique et l'interprétation doivent venir de vous."
+    },
+    "Obtenir une rétroaction": {
+        title: "Point de vigilance",
+        content: "La rétroaction de l'IA est d'ordre général. Elle ne remplace pas les commentaires spécifiques de votre enseignant(e), qui connaît les objectifs du cours."
+    },
+    
+    // NIVEAU 3
+     "Résumer ou rédiger des parties d'un texte": {
+        title: "Point de vigilance : intégrité académique",
+        content: "Assurez-vous que cet usage est autorisé par votre enseignant(e). Vous êtes responsable de l'exactitude et de l'originalité du contenu final."
+    },
+    "Produire du code informatique": {
+        title: "Bonne pratique",
+        content: "L'IA peut accélérer le développement, mais il est crucial de comprendre chaque ligne de code générée pour pouvoir le déboguer et le maintenir."
+    }
+
+    // ... (le reste de votre objet contextualTips)
 };
 
 // INITIALIZATION
