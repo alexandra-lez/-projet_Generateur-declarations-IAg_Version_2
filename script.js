@@ -79,66 +79,31 @@ const contextualTips = {
     'Recommandations': { title: "Point de vigilance", content: "Les recommandations générées par des outils d’IAg sont basées sur des modèles statistiques. Elles doivent être évaluées de manière critique à la lumière de votre expertise et des objectifs de votre recherche." },
     'Soutien à la publication': { title: "Bonne pratique", content: " L’IAg peut être très utile pour rédiger une lettre de présentation ou des réponses aux évaluateurs. Cependant, il est important de toujours personnaliser le contenu pour qu’il soit spécifique et sincère." },
 
-  // AJOUTS POUR LES ÉTUDIANTS
-
+  // Étudiant avec balises
     // NIVEAU 1
-    "S'inspirer": { 
-        title: "Bonne pratique", 
-        content: "Utilisez l'IA pour explorer différents angles d'un sujet, mais assurez-vous de développer votre propre perspective originale." 
-    },
-    "Générer des idées": { 
-        title: "Bonne pratique", 
-        content: "L'IA est un excellent point de départ pour le remue-méninges. Notez les idées qui vous semblent les plus pertinentes et approfondissez-les vous-même." 
-    },
-    "Explorer un sujet pour mieux le comprendre": { 
-        title: "Point de vigilance : vérification des faits", 
-        content: "L'IA peut parfois fournir des informations incorrectes ou obsolètes. Toujours croiser les sources avec des documents académiques fiables." 
-    },
-    "Générer du matériel pour son étude": { 
-        title: "Point de vigilance : appropriation du contenu", 
-        content: "Assurez-vous de bien comprendre le matériel généré. Le simple fait de le lire ne suffit pas; vous devez être capable de l'expliquer dans vos propres mots." 
-    },
-    "Identifier ses erreurs et se les faire expliquer": { 
-        title: "Bonne pratique", 
-        content: "Soumettez un de vos textes à une IA pour qu'elle identifie les erreurs de grammaire ou de syntaxe. Demandez des explications claires pour ne pas répéter ces erreurs." 
-    },
-    "Reformuler un texte": { 
-        title: "Point de vigilance : plagiat", 
-        content: "La reformulation par une IA peut s'apparenter à du plagiat si vous ne citez pas la source originale. Utilisez cette fonction pour mieux comprendre un passage, puis rédigez votre propre version." 
-    },
-    "Générer un plan pour aider à structurer un texte": { 
-        title: "Bonne pratique", 
-        content: "Un plan généré par une IA est une excellente base. Adaptez-le en fonction de votre argumentation et des exigences de votre travail." 
-    },
-    "Traduire un texte": { 
-        title: "Point de vigilance : nuances culturelles et terminologiques", 
-        content: "Les outils de traduction automatique sont utiles, mais peuvent manquer de précision pour le jargon technique ou les expressions idiomatiques. Une révision est toujours nécessaire." 
-    },
-    
-    // ... (Ajoutez ici les conseils pour les NIVEAUX 2 et 3) ...
-
+    "S'inspirer": { title: "Bonne pratique", content: "Utilisez l'IA pour explorer différents angles d'un sujet, mais assurez-vous de développer votre propre perspective originale." },
+    "Générer des idées": { title: "Bonne pratique", content: "L'IA est un excellent partenaire pour un remue-méninges. Traitez ses suggestions comme un point de départ à critiquer et à enrichir." },
+    "Explorer un sujet pour mieux le comprendre": { title: "Point de vigilance (Exactitude)", content: "L'IA peut simplifier à l'excès ou commettre des erreurs. Validez toujours les informations importantes avec les sources vues en cours ou des références académiques." },
+    "Générer du matériel pour son étude": { title: "Bonne pratique", content: "Créez des aide-mémoires, des cartes éclair (*flashcards*) ou des quiz personnalisés pour réviser la matière de manière active." },
+    "Identifier ses erreurs et se les faire expliquer": { title: "Bonne pratique", content: "Soumettez un de vos textes pour obtenir une correction détaillée et demandez des explications sur les règles de grammaire que vous n'avez pas respectées." },
+    "Reformuler un texte": { title: "Bonne pratique", content: "Utilisez cette fonction pour clarifier un passage complexe ou pour varier votre vocabulaire, puis réécrivez la phrase avec vos propres mots." },
+    "Générer un plan pour aider à structurer un texte": { title: "Bonne pratique", content: "Un plan généré par une IA est une excellente base. Adaptez-le en fonction de votre argumentation, de vos idées et des exigences spécifiques du travail." },
+    "Traduire un texte": { title: "Point de vigilance (Précision)", content: "La traduction automatique manque souvent de précision pour le jargon technique ou les expressions idiomatiques. Une révision par une personne compétente est essentielle pour un travail important." },
     // NIVEAU 2
-    "Analyser des contenus": {
-        title: "Bonne pratique",
-        content: "Utilisez l'IA pour identifier les thèmes principaux ou les arguments d'un texte, mais l'analyse critique et l'interprétation doivent venir de vous."
-    },
-    "Obtenir une rétroaction": {
-        title: "Point de vigilance",
-        content: "La rétroaction de l'IA est d'ordre général. Elle ne remplace pas les commentaires spécifiques de votre enseignant(e), qui connaît les objectifs du cours."
-    },
-    
+    "Analyser des contenus": { title: "Bonne pratique", content: "Demandez à l'IA d'identifier les arguments principaux, les thèmes récurrents ou le ton d'un article pour orienter votre propre analyse critique." },
+    "Obtenir une rétroaction": { title: "Bonne pratique", content: "Sollicitez une rétroaction sur la clarté, la structure ou la cohérence de votre argumentation avant de soumettre un travail." },
+    "Évaluer la qualité de son travail à partir de critères": { title: "Bonne pratique", content: "Soumettez votre travail accompagné de la grille d'évaluation du cours et demandez à l'IA de l'évaluer de manière formative pour identifier vos points forts et vos points à améliorer." },
+    "Demander à être confronté relativement à ses idées, à sa démarche": { title: "Bonne pratique", content: "Présentez votre argumentaire à l'IA et demandez-lui de jouer le rôle de l'« avocat du diable » en soulevant des contre-arguments ou des failles potentielles." },
+    "Diriger les processus de résolution de problèmes": { title: "Bonne pratique", content: "Décrivez un problème complexe et demandez à l'IA de proposer une série d'étapes ou différentes méthodes pour le résoudre." },
     // NIVEAU 3
-     "Résumer ou rédiger des parties d'un texte": {
-        title: "Point de vigilance : intégrité académique",
-        content: "Assurez-vous que cet usage est autorisé par votre enseignant(e). Vous êtes responsable de l'exactitude et de l'originalité du contenu final."
-    },
-    "Produire du code informatique": {
-        title: "Bonne pratique",
-        content: "L'IA peut accélérer le développement, mais il est crucial de comprendre chaque ligne de code générée pour pouvoir le déboguer et le maintenir."
-    }
+    "Résumer ou rédiger des parties d'un texte": { title: "Point de vigilance (Intégrité académique)", content: "Cet usage doit être explicitement autorisé par votre personne enseignante. Vous demeurez entièrement responsable de l'exactitude, de l'originalité et de l'absence de plagiat du contenu final." },
+    "Générer un texte ou un modèle d'une production et l'adapter": { title: "Point de vigilance (Voix d'auteur)", content: "Le texte généré doit être entièrement retravaillé pour refléter votre style, votre voix et votre pensée critique. Une simple adaptation est insuffisante et souvent facile à détecter." },
+    "Réaliser des calculs mathématiques": { title: "Bonne pratique", content: "Utilisez l'IA comme une calculatrice avancée pour vérifier des calculs complexes, en lui demandant de détailler les étapes pour valider la méthode." },
+    "Produire du code informatique": { title: "Bonne pratique", content: "L'IA peut générer des fonctions ou des scripts pour automatiser des tâches, vous permettant de vous concentrer sur la logique globale du programme." },
+    "Résoudre des problèmes complexes": { title: "Point de vigilance (Boîte noire)", content: "Ne prenez jamais une solution proposée par une IA pour acquise. Vous devez comprendre les hypothèses sous-jacentes au modèle et être capable d'expliquer pourquoi la solution est pertinente." },
+    "Répondre à une question": { title: "Point de vigilance (Sources fantômes)", content: "L'IA peut « halluciner » des informations et des sources qui n'existent pas. Toute information utilisée dans un travail doit être vérifiée à partir de sources fiables." },
 
-    // ... (le reste de votre objet contextualTips)
-};
+  };
 
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', () => {
