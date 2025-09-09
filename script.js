@@ -25,8 +25,8 @@ const gaidetTaxonomyData = {
 const contextualTips = {
     // General
     'Usage non spécifié': { title: "Point de vigilance : responsabilité accrue", content: "Pour tout usage non listé, la responsabilité de la justification et du respect de l'intégrité académique vous incombe entièrement. Documentez bien votre processus." },
-    
-    const contextualTipsForStudents = {
+};
+const contextualTipsForStudents = {
     // NIVEAU 1 : Utilisation limitée
     "S'inspirer": { title: "Bonne pratique : pensée divergente", content: "Utilisez l'IA pour générer un grand volume d'idées brutes (divergence), mais gardez le contrôle total sur le choix, la critique et l'affinage des meilleures pistes (convergence)." },
     "Générer des idées": { title: "Bonne pratique : remue-méninges structuré", content: "Pour de meilleurs résultats, donnez un rôle à l'IA (ex: 'Agis comme un expert en marketing') et un cadre (ex: 'Propose 5 idées d'accroche pour un texte sur ce sujet')." },
