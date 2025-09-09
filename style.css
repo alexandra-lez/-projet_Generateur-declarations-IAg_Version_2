@@ -205,7 +205,7 @@
 
         .copy-btn {
             background-color: #fff;
-            color: var(--light-text-color);
+            color: #fff(--light-text-color);
             border: 1px solid var(--border-color);
             padding: 0.4rem 0.8rem;
             font-size: 0.9em;
