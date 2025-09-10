@@ -2,7 +2,7 @@
 const studentTasksData = {
   "NIVEAU 1 : Utilisation limitée": { domains: { "Domaine disciplinaire": ["Inspiration", "Générer des idées", "Explorer un sujet pour mieux le comprendre", "Générer du matériel pour son étude"], "Domaine des langues": ["Identifier ses erreurs et se les faire expliquer", "Reformuler un texte", "Générer un plan pour aider à structurer un texte", "Traduire un texte"]}},
   "NIVEAU 2 : Utilisation guidée": { domains: { "": ["Analyser des contenus", "Obtenir une rétroaction", "Évaluer la qualité de son travail à partir de critères", "Demander à être confronté relativement à ses idées, à sa démarche", "Diriger les processus de résolution de problèmes"]}},
-  "NIVEAU 3 : Utilisation balisée": { domains: { "": ["Résumer un texte", "Générer un texte et l'adapter", "Réaliser des calculs mathématiques", "Produire du code informatique", "Résoudre des problèmes complexes", "Répondre à une question", "Générer des images, ou contenus multimédias"]}},
+  "NIVEAU 3 : Utilisation balisée": { domains: { "": ["Résumer un texte", "Générer un texte", "Réaliser des calculs mathématiques", "Produire du code informatique", "Résoudre des problèmes complexes", "Répondre à une question", "Générer des images, ou contenus multimédias"]}},
   "NIVEAU 4 : Utilisation libre": { domains: { "": [] }}
 };
 const teacherTasksData = {
@@ -103,7 +103,7 @@ const contextualTips = {
     "Diriger les processus de résolution de problèmes": { title: "Bonne pratique", content: "Décrivez un problème complexe et demandez à l'IAg de proposer une série d'étapes ou différentes méthodes pour le résoudre." },
     // NIVEAU 3
     "Résumer un texte": { title: "Point de vigilance", content: "Le travail de synthèse consiste avant tout en un exercice intellectuel permettant de comprendre et de hiérarchiser les informations. Déléguer cette tâche à une IAg s’avère pratique, mais pourrait nous priver d’une étape d’appropriation des connaissances." },
-    "Générer un texte et l'adapter": { title: "Point de vigilance : voix d'auteur", content: "Le texte généré doit être entièrement retravaillé pour refléter votre style, votre voix et votre pensée critique." },
+    "Générer un texte": { title: "Point de vigilance : voix d'auteur", content: "Le texte généré doit être entièrement retravaillé pour refléter votre style, votre voix et votre pensée critique." },
     "Réaliser des calculs mathématiques": { title: "Bonne pratique", content: "Utilisez l'IAg comme une calculatrice avancée pour vérifier des calculs complexes, en lui demandant de détailler les étapes pour valider la méthode." },
     "Produire du code informatique": { title: "Bonne pratique", content: "L'IAg peut générer des fonctions ou des scripts pour automatiser des tâches, vous permettant de vous concentrer sur la logique globale du programme." },
     "Résoudre des problèmes complexes": { title: "Point de vigilance : boîte noire", content: "Ne tenez jamais une réponse proposée par une IAg pour acquise. Vous devez comprendre les hypothèses sous-jacentes au modèle et être capable d'expliquer pourquoi la solution est pertinente." },
