@@ -102,7 +102,7 @@ const contextualTips = {
     "Demander à être confronté relativement à ses idées, à sa démarche": { title: "Bonne pratique", content: "Présentez votre argumentaire à l'IAg et demandez-lui de jouer le rôle de l'« avocat du diable » en soulevant des contre-arguments ou des failles potentielles." },
     "Diriger les processus de résolution de problèmes": { title: "Bonne pratique", content: "Décrivez un problème complexe et demandez à l'IAg de proposer une série d'étapes ou différentes méthodes pour le résoudre." },
     // NIVEAU 3
-    "Résumer un texte": { title: "Point de vigilance", content: "Information à venir." },
+    "Résumer un texte": { title: "Point de vigilance", content: "Le travail de synthèse consiste avant tout en un exercice intellectuel permettant de comprendre et de hiérarchiser les informations. Déléguer cette tâche à une IAg s’avère pratique, mais pourrait nous priver d’une étape d’appropriation des connaissances." },
     "Générer un texte et l'adapter": { title: "Point de vigilance : voix d'auteur", content: "Le texte généré doit être entièrement retravaillé pour refléter votre style, votre voix et votre pensée critique." },
     "Réaliser des calculs mathématiques": { title: "Bonne pratique", content: "Utilisez l'IAg comme une calculatrice avancée pour vérifier des calculs complexes, en lui demandant de détailler les étapes pour valider la méthode." },
     "Produire du code informatique": { title: "Bonne pratique", content: "L'IAg peut générer des fonctions ou des scripts pour automatiser des tâches, vous permettant de vous concentrer sur la logique globale du programme." },
