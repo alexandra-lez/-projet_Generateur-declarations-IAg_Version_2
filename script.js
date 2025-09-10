@@ -108,7 +108,7 @@ const contextualTips = {
     "Produire du code informatique": { title: "Bonne pratique", content: "L'IAg peut générer des fonctions ou des scripts pour automatiser des tâches, vous permettant de vous concentrer sur la logique globale du programme." },
     "Résoudre des problèmes complexes": { title: "Point de vigilance : boîte noire", content: "Ne prenez jamais une réponse proposée par une IAg pour acquise. Vous devez comprendre les hypothèses sous-jacentes au modèle et être capable d'expliquer pourquoi la solution est pertinente." },
     "Répondre à une question": { title: "Point de vigilance : sources fantômes", content: "L'IAg peut « halluciner », inventer des informations et des sources qui n'existent pas. Toute information utilisée dans un travail doit être vérifiée à partir de sources fiables." },
-    "Générer des images, ou contenus multimédias": { title: "Point de vigilance", content: "Information à venir." },
+    "Générer des images, ou contenus multimédias": { title: "Point de vigilance", content: "Avant d’utiliser une image ou une vidéo générée par une IA, vérifiez ses droits d’utilisation, analysez les biais qu’elle pourrait contenir et mentionnez toujours son origine artificielle pour garantir l’intégrité académique et dans certains contextes, éviter la désinformation." },
 
 
   };
