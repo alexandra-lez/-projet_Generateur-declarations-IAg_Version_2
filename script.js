@@ -2,7 +2,7 @@
 const studentTasksData = {
   "NIVEAU 1 : Utilisation limitée": { domains: { "Domaine disciplinaire": ["Inspiration", "Générer des idées", "Explorer un sujet pour mieux le comprendre", "Générer du matériel pour son étude"], "Domaine des langues": ["Identifier ses erreurs et se les faire expliquer", "Reformuler un texte", "Générer un plan pour aider à structurer un texte", "Traduire un texte"]}},
   "NIVEAU 2 : Utilisation guidée": { domains: { "": ["Analyser des contenus", "Obtenir une rétroaction", "Évaluer la qualité de son travail à partir de critères", "Demander à être confronté relativement à ses idées, à sa démarche", "Diriger les processus de résolution de problèmes"]}},
-  "NIVEAU 3 : Utilisation balisée": { domains: { "": ["Résumer ou rédiger des parties d'un texte", "Générer un texte ou un modèle d'une production et l'adapter", "Réaliser des calculs mathématiques", "Produire du code informatique", "Résoudre des problèmes complexes", "Répondre à une question", "Générer des images, ou contenus multimédias"]}},
+  "NIVEAU 3 : Utilisation balisée": { domains: { "": ["Résumer un texte", "Générer un texte et l'adapter", "Réaliser des calculs mathématiques", "Produire du code informatique", "Résoudre des problèmes complexes", "Répondre à une question", "Générer des images, ou contenus multimédias"]}},
   "NIVEAU 4 : Utilisation libre": { domains: { "": [] }}
 };
 const teacherTasksData = {
@@ -98,12 +98,12 @@ const contextualTips = {
     // NIVEAU 2
     "Analyser des contenus": { title: "Bonne pratique", content: "Demandez à l'IAg d'identifier les arguments principaux, les thèmes récurrents ou le ton d'un article pour orienter votre propre analyse critique." },
     "Obtenir une rétroaction": { title: "Bonne pratique", content: "Sollicitez une rétroaction sur la clarté, la structure ou la cohérence de votre argumentation avant de soumettre un travail." },
-    "Évaluer la qualité de son travail à partir de critères": { title: "Bonne pratique", content: "Soumettez votre travail et demandez à l'IAg de l'évaluer de manière formative pour identifier vos points forts et vos points à améliorer." },
+    "Évaluer la qualité de son travail à partir de critères": { title: "Bonne pratique", content: "Soumettez votre travail et demandez à l'IAg de l'évaluer de manière formative pour identifier vos points forts et vos points à améliorer. Demandez des explications et des précisions pour comprendre vos erreurs." },
     "Demander à être confronté relativement à ses idées, à sa démarche": { title: "Bonne pratique", content: "Présentez votre argumentaire à l'IAg et demandez-lui de jouer le rôle de l'« avocat du diable » en soulevant des contre-arguments ou des failles potentielles." },
     "Diriger les processus de résolution de problèmes": { title: "Bonne pratique", content: "Décrivez un problème complexe et demandez à l'IAg de proposer une série d'étapes ou différentes méthodes pour le résoudre." },
     // NIVEAU 3
-    "Résumer ou rédiger des parties d'un texte": { title: "Point de vigilance : intégrité académique", content: "Cet usage doit être explicitement autorisé par votre personne enseignante. Vous demeurez entièrement responsable de l'exactitude, de l'originalité et de l'absence de plagiat du contenu final." },
-    "Générer un texte ou un modèle d'une production et l'adapter": { title: "Point de vigilance : voix d'auteur", content: "Le texte généré doit être entièrement retravaillé pour refléter votre style, votre voix et votre pensée critique. Une simple adaptation est insuffisante et souvent facile à détecter." },
+    "Résumer un texte": { title: "Point de vigilance", content: "Information à venir." },
+    "Générer un texte et l'adapter": { title: "Point de vigilance : voix d'auteur", content: "Le texte généré doit être entièrement retravaillé pour refléter votre style, votre voix et votre pensée critique." },
     "Réaliser des calculs mathématiques": { title: "Bonne pratique", content: "Utilisez l'IAg comme une calculatrice avancée pour vérifier des calculs complexes, en lui demandant de détailler les étapes pour valider la méthode." },
     "Produire du code informatique": { title: "Bonne pratique", content: "L'IAg peut générer des fonctions ou des scripts pour automatiser des tâches, vous permettant de vous concentrer sur la logique globale du programme." },
     "Résoudre des problèmes complexes": { title: "Point de vigilance : boîte noire", content: "Ne prenez jamais une réponse proposée par une IAg pour acquise. Vous devez comprendre les hypothèses sous-jacentes au modèle et être capable d'expliquer pourquoi la solution est pertinente." },
