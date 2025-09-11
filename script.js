@@ -225,10 +225,10 @@ function addAiToolEntry(profile, isFirst = false) {
     const entry = document.createElement('div');
     entry.className = 'ai-tool-entry';
     entry.innerHTML = `<div class="grid-inputs">
-        <div class="input-group"><label>Nom (et version)</label><input type="text" class="ai-name" oninput="updateAllDropdowns()">par exemple, ChatGPT, Mistral...</div>
-        <div class="input-group"><label>Entité créatrice</label><input type="text" class="ai-creator" oninput="updateAllDropdowns()">par exemple, OpenAI, Antropic...</div>
-        <div class="input-group"><label>Année</label><input type="text" class="ai-date" oninput="updateAllDropdowns()">par exemple, 2025</div>
-        <div class="input-group"><label>URL</label><input type="text" class="ai-url" oninput="updateAllDropdowns()">par exemple, chatgpt.com</div>
+        <div class="input-group"><label>Nom (et version)</label><input type="text" class="ai-name" oninput="updateAllDropdowns()"></div>
+        <div class="input-group"><label>Entité créatrice</label><input type="text" class="ai-creator" oninput="updateAllDropdowns()"></div>
+        <div class="input-group"><label>Année</label><input type="text" class="ai-date" oninput="updateAllDropdowns()"></div>
+        <div class="input-group"><label>URL</label><input type="text" class="ai-url" oninput="updateAllDropdowns()"></div>
     </div>`;
     if (!isFirst) {
         const removeBtn = document.createElement('button');
