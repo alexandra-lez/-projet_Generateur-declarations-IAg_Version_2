@@ -110,10 +110,7 @@ const contextualTips = {
     "Répondre à une question": { title: "Point de vigilance : sources fantômes", content: "L'IAg peut « halluciner », inventer des informations et des sources qui n'existent pas. Toute information utilisée dans un travail doit être vérifiée à partir de sources fiables." }, 
     "Générer des images, ou contenus multimédias": { title: "Point de vigilance", content: "Avant d’utiliser une image ou une vidéo générée par une IA, vérifiez ses droits d’utilisation, analysez les biais qu’elle pourrait contenir et mentionnez toujours son origine artificielle pour garantir l’intégrité académique et dans certains contextes, éviter la désinformation." }, 
 
-
   }; 
-
-
 
 // --- INITIALISATION ---
 document.addEventListener('DOMContentLoaded', () => {
