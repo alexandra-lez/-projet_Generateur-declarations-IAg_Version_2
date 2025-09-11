@@ -448,4 +448,3 @@ function generateResearcherDeclaration() {
 
     return header + body + getReflectionText(profile) + getIntegrityText(profile);
 }
-
