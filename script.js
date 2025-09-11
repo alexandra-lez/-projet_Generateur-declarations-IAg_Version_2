@@ -1,4 +1,4 @@
-// DATA | Version 3, Alexandra Lez & Gemini, 11 septembre 2025
+// DATA | Version 4, Alexandra Lez & Gemini, 11 septembre 2025
 const studentTasksData = {
     "NIVEAU 1 : Utilisation limitée": { domains: { "Domaine disciplinaire": ["Trouver inspiration", "Générer des idées", "Explorer un sujet pour mieux le comprendre", "Générer du matériel pour son étude"], "Domaine des langues": ["Identifier ses erreurs et se les faire expliquer", "Reformuler un texte", "Générer un plan pour aider à structurer un texte", "Traduire un texte"]}},
     "NIVEAU 2 : Utilisation guidée": { domains: { "": ["Analyser des contenus", "Obtenir une rétroaction", "Évaluer la qualité de son travail à partir de critères", "Demander à être confronté relativement à ses idées, à sa démarche", "Diriger les processus de résolution de problèmes"]}},
@@ -22,11 +22,11 @@ const gaidetTaxonomyData = {
     "Revue éthique": ["Analyse des biais et des discriminations potentielles", "Analyse des risques éthiques", "Suivi de la conformité aux normes éthiques", "Suivi de la confidentialité des données"],
     "Supervision": ["Évaluation de la qualité", "Identification des tendances", "Recommandations", "Soutien à la publication"]
 };
-// Les données `contextualTips` restent les mêmes que dans votre version
+// Assurez-vous que tous vos `contextualTips` sont bien listés ici.
 const contextualTips = {
     'Usage non spécifié': { title: "Point de vigilance : responsabilité accrue", content: "Pour tout usage non listé, la responsabilité de la justification et du respect de l'intégrité académique vous incombe entièrement. Documentez bien votre processus." },
     'Générer un texte': { title: "Point de vigilance : voix d'auteur", content: "Le texte généré doit être entièrement retravaillé pour refléter votre style, votre voix et votre pensée critique." },
-    // ... (tous vos autres conseils ici)
+    // ... et tous les autres conseils que vous aviez.
 };
 
 
@@ -72,6 +72,7 @@ function buildStudentBalisesTasksHTML() {
         details.innerHTML = `<summary><span>${level}</span></summary>`;
         if (level === "NIVEAU 4 : Utilisation libre") {
             const level4Container = document.createElement('div');
+            level4Container.id = `dynamic-tasks-container-${level}`; // Donnons un ID pour mieux le cibler
             details.appendChild(level4Container);
             const addButton = document.createElement('button');
             addButton.onclick = (e) => { e.preventDefault(); addDynamicTask('student', level4Container, 'balises'); };
@@ -95,15 +96,14 @@ function buildStudentBalisesTasksHTML() {
 function createTaskItem(task, profile) {
     const item = document.createElement('div');
     item.className = 'task-item';
-    // Correction de la clé pour correspondre à "Générer un texte"
     const tipKey = task.trim();
     const tip = contextualTips[tipKey] || contextualTips['Usage non spécifié'];
 
     item.innerHTML = `
         <div class="task-item-content">
             <label><span><input type="checkbox" data-task-name="${task}" onchange="togglePrompt(this)"> ${task}</span><i class="fas fa-info-circle tip-icon" onclick="toggleTip(event)"></i></label>
-            <div class="contextual-tip"><h4><i class="fas fa-lightbulb"></i> ${tip.title}</h4><p>${tip.content}</p></div>
-            <div class="prompt-container">
+            <div class="contextual-tip" style="display:none;"><h4><i class="fas fa-lightbulb"></i> ${tip.title}</h4><p>${tip.content}</p></div>
+            <div class="prompt-container" style="display:none;">
                 <div class="input-group"><label>IAg utilisée</label><select class="task-tool-selector-${profile}"><option value="">Sélectionner...</option></select></div>
                 <div class="input-group"><label>Requête principale</label><input type="text" class="prompt-input" placeholder="Requête..."></div>
             </div>
@@ -113,6 +113,7 @@ function createTaskItem(task, profile) {
 
 function addDynamicTask(type, container = null, profile) {
     if(!container) container = document.getElementById(`dynamic-tasks-container-${profile}`);
+    if(!container) { console.error("Conteneur pour tâche dynamique introuvable."); return; }
     const item = document.createElement('div');
     item.className = 'dynamic-task-item';
     const placeholder = (type === 'teacher') ? "Par exemple, création d'une vidéo de synthèse..."
@@ -121,11 +122,11 @@ function addDynamicTask(type, container = null, profile) {
     const tip = contextualTips['Usage non spécifié'];
     item.innerHTML = `
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-            <input type="text" class="dynamic-task-description" placeholder="${placeholder}" style="flex-grow: 1;">
-            <i class="fas fa-info-circle tip-icon" onclick="toggleTip(event)"></i>
+            <input type="text" class="dynamic-task-description" placeholder="${placeholder}" style="flex-grow: 1; margin-right: 0.5rem;">
+            <i class="fas fa-info-circle tip-icon" onclick="toggleTip(event)" style="margin-right: 0.5rem; cursor:pointer;"></i>
             <button class="button-danger" onclick="this.closest('.dynamic-task-item').remove()"><i class="fas fa-trash"></i></button>
         </div>
-        <div class="contextual-tip"><h4><i class="fas fa-lightbulb"></i> ${tip.title}</h4><p>${tip.content}</p></div>
+        <div class="contextual-tip" style="display:none;"><h4><i class="fas fa-lightbulb"></i> ${tip.title}</h4><p>${tip.content}</p></div>
         <div class="input-group"><label>IAg utilisée</label><select class="task-tool-selector-${profile}"><option value="">Sélectionner...</option></select></div>
         <div class="input-group"><label>Requête principale</label><input type="text" class="prompt-input" placeholder="Requête..."></div>`;
     container.appendChild(item);
@@ -135,17 +136,22 @@ function addDynamicTask(type, container = null, profile) {
 // --- LOGIQUE DE L'INTERFACE ---
 function toggleTip(event) {
     const parent = event.target.closest('.task-item-content, .dynamic-task-item');
+    if (!parent) return;
     const tipElement = parent.querySelector('.contextual-tip');
+    if (!tipElement) return;
     tipElement.style.display = (tipElement.style.display === 'block') ? 'none' : 'block';
 }
 
 function togglePrompt(checkbox) {
-    const promptContainer = checkbox.closest('.task-item-content').querySelector('.prompt-container');
-    promptContainer.style.display = checkbox.checked ? 'block' : 'none';
+    const promptContainer = checkbox.closest('.task-item-content')?.querySelector('.prompt-container');
+    if (promptContainer) {
+        promptContainer.style.display = checkbox.checked ? 'block' : 'none';
+    }
 }
 
 function addAiToolEntry(profile, isFirst = false) {
     const container = document.getElementById(`ai-tools-container-${profile}`);
+    if (!container) return;
     const entry = document.createElement('div');
     entry.className = 'ai-tool-entry';
     entry.innerHTML = `<div class="grid-inputs">
@@ -168,7 +174,7 @@ function addAiToolEntry(profile, isFirst = false) {
 function updateAllDropdowns() {
     ['teacher', 'researcher', 'balises', 'sans-balises'].forEach(p => {
         if(document.getElementById(`ai-tools-container-${p}`)){
-            updateTaskToolDropdowns(p)
+            updateTaskToolDropdowns(p);
         }
     });
 }
@@ -184,100 +190,98 @@ function updateTaskToolDropdowns(profile) {
 }
 
 function checkChecklistCompletion(profile) {
+    const btn = document.getElementById(`generate-btn-${profile}`);
+    if (!btn) return;
     const allChecked = Array.from(document.querySelectorAll(`#self-assessment-checklist-${profile} input`)).every(cb => cb.checked);
-    document.getElementById(`generate-btn-${profile}`).disabled = !allChecked;
+    btn.disabled = !allChecked;
 }
 
 function copyToClipboard(elementId, button) {
     const textarea = document.getElementById(elementId);
+    if (!textarea) return;
     textarea.select();
     document.execCommand('copy');
     button.textContent = 'Copié !';
     setTimeout(() => { button.textContent = 'Copier'; }, 2000);
 }
 
-// --- LOGIQUE DE GÉNÉRATION DE TEXTE ---
+// --- LOGIQUE DE GÉNÉRATION DE TEXTE (SECTION RENDUE PLUS ROBUSTE) ---
+
+/**
+ * Fonction utilitaire pour récupérer la valeur d'un champ de manière sécuritaire.
+ * @param {string} id - L'ID de l'élément HTML.
+ * @param {string} defaultValue - La valeur à retourner si l'élément n'est pas trouvé ou est vide.
+ * @returns {string} La valeur de l'élément ou la valeur par défaut.
+ */
+function getElementValue(id, defaultValue = "") {
+    const element = document.getElementById(id);
+    return element ? element.value.trim() : defaultValue;
+}
+
 
 // Fonction principale appelée par le bouton "Générer"
 function generateOutputs(profile) {
-    // On s'assure que les éléments de sortie existent pour éviter les erreurs
     const outputElement = document.getElementById(`output-${profile}`);
     const biblioElement = document.getElementById(`bibliography-output-${profile}`);
     if (!outputElement || !biblioElement) {
         console.error(`Les éléments de sortie pour le profil '${profile}' sont introuvables.`);
+        alert(`Erreur : Impossible de trouver les zones de texte pour afficher le résultat (ID: output-${profile}).`);
         return;
     }
 
     let declarationText = '';
     switch (profile) {
-        case 'teacher':
-            declarationText = generateTeacherDeclaration();
-            break;
-        case 'researcher':
-            declarationText = generateResearcherDeclaration();
-            break;
-        case 'balises':
-            declarationText = generateStudentBalisesDeclaration();
-            break;
-        case 'sans-balises':
-            declarationText = generateStudentSansBalisesDeclaration();
-            break;
-        default:
-            console.error(`Profil inconnu: ${profile}`);
-            return;
+        case 'teacher': declarationText = generateTeacherDeclaration(); break;
+        case 'researcher': declarationText = generateResearcherDeclaration(); break;
+        case 'balises': declarationText = generateStudentBalisesDeclaration(); break;
+        case 'sans-balises': declarationText = generateStudentSansBalisesDeclaration(); break;
+        default: console.error(`Profil inconnu: ${profile}`); return;
     }
     
     outputElement.value = declarationText;
     biblioElement.value = generateBibliographyText(profile);
 }
 
-
 function generateBibliographyText(profile) {
     const entries = document.querySelectorAll(`#ai-tools-container-${profile} .ai-tool-entry`);
-    let biblioText = Array.from(entries).map(entry => {
-        const creator = entry.querySelector(".ai-creator").value.trim() || "[Entité]";
-        const date = entry.querySelector(".ai-date").value.trim() || "[Année]";
-        const name = entry.querySelector(".ai-name").value.trim() || "[Outil]";
-        const url = entry.querySelector(".ai-url").value.trim() || "[URL]";
-        if (name) {
-            return `${creator}. (${date}). *${name}* [Grand modèle de langage]. ${url}`;
-        }
-        return null;
+    return Array.from(entries).map(entry => {
+        const creator = entry.querySelector(".ai-creator")?.value.trim() || "[Entité]";
+        const date = entry.querySelector(".ai-date")?.value.trim() || "[Année]";
+        const name = entry.querySelector(".ai-name")?.value.trim(); // Le nom est requis
+        const url = entry.querySelector(".ai-url")?.value.trim() || "[URL]";
+        return name ? `${creator}. (${date}). *${name}* [Grand modèle de langage]. ${url}` : null;
     }).filter(Boolean).join('\n');
-    
-    return biblioText;
 }
+
 
 function getCommonHeaderText(profile) {
     const llmList = Array.from(document.querySelectorAll(`#ai-tools-container-${profile} .ai-name`))
         .map(i => i.value.trim()).filter(Boolean).join(', ') || "[non spécifié]";
 
     if (profile === 'teacher') {
-        const teacherName = document.getElementById(`teacher-name-teacher`).value.trim() || "[non spécifié]";
-        const courseTitle = document.getElementById(`course-title-teacher`).value.trim() || "[non spécifié]";
-        const sessionDate = document.getElementById(`session-date-teacher`).value.trim() || "[non spécifiée]";
+        const teacherName = getElementValue(`teacher-name-teacher`, "[non spécifié]");
+        const courseTitle = getElementValue(`course-title-teacher`, "[non spécifié]");
+        const sessionDate = getElementValue(`session-date-teacher`, "[non spécifiée]");
         return `DÉCLARATION D'USAGE DE L'IAg DANS L'ENSEIGNEMENT\n================================================\n\nPersonne enseignante: ${teacherName}\nCours: ${courseTitle}\nSession: ${sessionDate}\n\nOUTILS D'IAG UTILISÉS: ${llmList}\n\n`;
     } else if (profile === 'researcher') {
-        const researcherName = document.getElementById(`researcher-name-researcher`).value.trim() || "[non spécifié]";
-        const projectTitle = document.getElementById(`project-title-researcher`).value.trim() || "[non spécifié]";
-        const date = document.getElementById(`date-researcher`).value.trim() || "[non spécifiée]";
+        const researcherName = getElementValue(`researcher-name-researcher`, "[non spécifié]");
+        const projectTitle = getElementValue(`project-title-researcher`, "[non spécifié]");
+        const date = getElementValue(`date-researcher`, "[non spécifiée]");
         return `DÉCLARATION D'USAGE DE L'IAg EN RECHERCHE\n==========================================\n\nChercheur/Chercheuse: ${researcherName}\nProjet/Article: ${projectTitle}\nDate: ${date}\n\nOUTILS D'IAG UTILISÉS: ${llmList}\n\n`;
     } else {
-        const teacherName = document.getElementById(`teacher-name-${profile}`).value.trim() || "[non spécifié]";
-        const courseTitle = document.getElementById(`course-title-${profile}`).value.trim() || "[non spécifié]";
-        const sessionDate = document.getElementById(`session-date-${profile}`).value.trim() || "[non spécifiée]";
-        const studentName = document.getElementById(`student-name-${profile}`).value.trim() || "[non spécifié(e)]";
-        const productionTitle = document.getElementById(`production-title-${profile}`).value.trim() || "[non spécifiée]";
+        const teacherName = getElementValue(`teacher-name-${profile}`, "[non spécifié]");
+        const courseTitle = getElementValue(`course-title-${profile}`, "[non spécifié]");
+        const sessionDate = getElementValue(`session-date-${profile}`, "[non spécifiée]");
+        const studentName = getElementValue(`student-name-${profile}`, "[non spécifié(e)]");
+        const productionTitle = getElementValue(`production-title-${profile}`, "[non spécifiée]");
         return `DÉCLARATION D'UTILISATION D'IAg\n==================================\n\nCours: ${courseTitle}\nPersonne enseignante: ${teacherName}\nSession, date: ${sessionDate}\nPersonne étudiante: ${studentName}\nProduction: "${productionTitle}"\n\nOUTILS D'IAG UTILISÉS: ${llmList}\n\n`;
     }
 }
 
 function getReflectionText(profile) {
-    const reflectionProcess = document.getElementById(`reflection-process-${profile}`).value.trim();
-    const reflectionLimitsElem = document.getElementById(`reflection-limits-${profile}`);
-    const reflectionLimits = reflectionLimitsElem ? reflectionLimitsElem.value.trim() : "";
-    const reflectionSkillElem = document.getElementById(`reflection-skill-${profile}`);
-    const reflectionSkill = reflectionSkillElem ? reflectionSkillElem.value.trim() : "";
+    const reflectionProcess = getElementValue(`reflection-process-${profile}`);
+    const reflectionLimits = getElementValue(`reflection-limits-${profile}`);
+    const reflectionSkill = getElementValue(`reflection-skill-${profile}`);
 
     if (!reflectionProcess && !reflectionLimits && !reflectionSkill) return "";
 
@@ -285,7 +289,7 @@ function getReflectionText(profile) {
     if (reflectionProcess) text += `Apports de l'IAg au processus:\n${reflectionProcess}\n\n`;
     if (reflectionLimits) text += `Limites identifiées et processus de validation:\n${reflectionLimits}\n\n`;
     if (reflectionSkill) text += `Modélisation d'une pratique éthique:\n${reflectionSkill}\n\n`;
-    return text;
+    return text.trim();
 }
 
 function getIntegrityText(profile) {
@@ -296,31 +300,56 @@ function getIntegrityText(profile) {
                            ? `confirme avoir respecté sa checklist d'intégrité.`
                            : `confirme avoir respecté sa checklist d'intégrité et assume l'entière responsabilité du contenu final.`;
     
-    return `\nENGAGEMENT D'INTÉGRITÉ\n----------------------\nEn générant cette déclaration, ${roleText} ${confirmationText}`;
+    return `\n\nENGAGEMENT D'INTÉGRITÉ\n----------------------\nEn générant cette déclaration, ${roleText} ${confirmationText}`;
 }
 
-// **CORRECTION MAJEURE**: Cette fonction a été refactorisée pour être plus simple et réutilisable.
-function getTasksText(profile, containerId, title) {
-    const tasksByCategory = {};
+function getTasksText(profile, containerId) {
+    const tasksByLevel = {};
     
-    // Collecter les tâches prédéfinies cochées
     document.querySelectorAll(`#${containerId} input[type="checkbox"]:checked`).forEach(cb => {
-        const categoryElement = cb.closest('details')?.querySelector('summary > span');
-        if (!categoryElement) return; // Sécurité si la structure est inattendue
+        const levelElement = cb.closest('.level-details')?.querySelector('summary > span');
+        if (!levelElement) return;
+
+        const level = levelElement.textContent;
+        const taskLabel = cb.dataset.taskName;
+        const tool = cb.closest('.task-item-content')?.querySelector(`.task-tool-selector-${profile}`)?.value.trim();
+        const prompt = cb.closest('.task-item-content')?.querySelector('.prompt-input')?.value.trim();
+
+        if (!tasksByLevel[level]) tasksByLevel[level] = [];
+        tasksByLevel[level].push({taskLabel, tool, prompt});
+    });
+
+    let body = "";
+    Object.keys(tasksByLevel).forEach(level => {
+        body += `\n${level.toUpperCase()}:\n`;
+        tasksByLevel[level].forEach(t => {
+            body += `- ${t.taskLabel}`;
+            if (t.tool) body += ` (IAg: ${t.tool})`;
+            if (t.prompt) body += `\n  Requête: "${t.prompt}"`;
+            body += `\n`;
+        });
+    });
+    return body;
+}
+
+function getCategorizedTasksText(profile, containerId, title){
+    const tasksByCategory = {};
+    document.querySelectorAll(`#${containerId} input[type="checkbox"]:checked`).forEach(cb => {
+        const categoryElement = cb.closest('.gaidet-category')?.querySelector('summary > span');
+        if (!categoryElement) return; 
 
         const category = categoryElement.textContent;
         const taskLabel = cb.dataset.taskName;
-        const tool = cb.closest('.task-item-content').querySelector(`.task-tool-selector-${profile}`).value.trim();
-        const prompt = cb.closest('.task-item-content').querySelector('.prompt-input').value.trim();
+        const tool = cb.closest('.task-item-content')?.querySelector(`.task-tool-selector-${profile}`)?.value.trim();
+        const prompt = cb.closest('.task-item-content')?.querySelector('.prompt-input')?.value.trim();
 
         if (!tasksByCategory[category]) tasksByCategory[category] = [];
         tasksByCategory[category].push({taskLabel, tool, prompt});
     });
 
-    // Construire le texte
     let body = "";
     if (Object.keys(tasksByCategory).length > 0) {
-        if(title) body += `\n${title.toUpperCase()}\n${'-'.repeat(title.length)}\n`;
+        body += `\n${title.toUpperCase()}\n${'-'.repeat(title.length)}\n`;
         Object.keys(tasksByCategory).forEach(category => {
             body += `\n**${category}**\n`;
             tasksByCategory[category].forEach(t => {
@@ -334,14 +363,13 @@ function getTasksText(profile, containerId, title) {
     return body;
 }
 
-
-function getDynamicTasksText(profile, containerId, title) {
+function getDynamicTasksText(profile, containerSelector, title) {
     const tasks = [];
-    document.querySelectorAll(`#${containerId} .dynamic-task-item`).forEach(item => {
-        const taskLabel = item.querySelector('.dynamic-task-description').value.trim();
+    document.querySelectorAll(`${containerSelector} .dynamic-task-item`).forEach(item => {
+        const taskLabel = item.querySelector('.dynamic-task-description')?.value.trim();
         if (!taskLabel) return;
-        const tool = item.querySelector(`.task-tool-selector-${profile}`).value.trim();
-        const prompt = item.querySelector('.prompt-input').value.trim();
+        const tool = item.querySelector(`.task-tool-selector-${profile}`)?.value.trim();
+        const prompt = item.querySelector('.prompt-input')?.value.trim();
         tasks.push({taskLabel, tool, prompt});
     });
 
@@ -358,20 +386,18 @@ function getDynamicTasksText(profile, containerId, title) {
     return body;
 }
 
-
 function generateStudentBalisesDeclaration() {
     const profile = 'balises';
     let header = getCommonHeaderText(profile);
-    let body = `DÉTAIL DES USAGES DÉCLARÉS\n--------------------------\n`;
+    let body = `DÉTAIL DES USAGES DÉCLARÉS\n--------------------------`;
     
-    const tasksText = getTasksText(profile, 'tasks-section-balises', ''); // On utilise la nouvelle fonction
-    const dynamicTasksText = getDynamicTasksText(profile, 'tasks-section-balises', 'NIVEAU 4 : Utilisation libre');
+    const tasksText = getTasksText(profile, 'tasks-section-balises');
+    const dynamicTasksText = getDynamicTasksText(profile, '#tasks-section-balises', 'NIVEAU 4 : Utilisation libre');
 
     if (!tasksText.trim() && !dynamicTasksText.trim()) {
-        body += "Aucune tâche spécifique n'a été déclarée.\n";
+        body += "\nAucune tâche spécifique n'a été déclarée.\n";
     } else {
-        body += tasksText;
-        body += dynamicTasksText.replace('**NIVEAU 4 : Utilisation libre**', '\n**NIVEAU 4 : Utilisation libre**'); // Assure un formatage propre
+        body += tasksText + dynamicTasksText;
     }
     
     return header + body + getReflectionText(profile) + getIntegrityText(profile);
@@ -381,13 +407,10 @@ function generateStudentSansBalisesDeclaration() {
     const profile = 'sans-balises';
     let header = getCommonHeaderText(profile);
     let body = "DÉTAIL DES USAGES DÉCLARÉS\n--------------------------\n";
-    let dynamicBody = getDynamicTasksText(profile, 'dynamic-tasks-container-sans-balises', 'Usages');
+    let dynamicBody = getDynamicTasksText(profile, '#dynamic-tasks-container-sans-balises', 'Usages');
     
-    if(dynamicBody.trim()){
-        body += dynamicBody;
-    } else {
-        body += "Aucun usage spécifique n'a été déclaré.\n";
-    }
+    body += dynamicBody.trim() ? dynamicBody : "Aucun usage spécifique n'a été déclaré.\n";
+    
     return header + body + getReflectionText(profile) + getIntegrityText(profile);
 }
 
@@ -395,7 +418,6 @@ function generateTeacherDeclaration() {
     const profile = 'teacher';
     let header = getCommonHeaderText(profile);
     
-    // Cadre d'utilisation (plus robuste)
     const policyLevelInput = document.querySelector('#teacher-policy-choice input[name="student-level"]:checked');
     const policyLevel = policyLevelInput ? policyLevelInput.value : null;
     let policyText = `\nCADRE D'UTILISATION POUR LES ÉTUDIANT(E)S\n---------------------------------------------\n`;
@@ -403,16 +425,12 @@ function generateTeacherDeclaration() {
         ? `Le niveau d'utilisation de l'IAg autorisé dans ce cours est le **Niveau ${policyLevel}**. Se référer au plan de cours pour les détails.\n\n`
         : `Le cadre d'utilisation de l'IAg pour les étudiant(e)s n'a pas été spécifié via cet outil.\n\n`;
 
-    // Usages
-    const predefinedBody = getTasksText(profile, 'tasks-section-teacher', "Usages pédagogiques déclarés");
-    const dynamicBody = getDynamicTasksText(profile, 'dynamic-tasks-container-teacher', "Autres usages (spécifiés par l'enseignant)");
+    const predefinedBody = getCategorizedTasksText(profile, 'tasks-section-teacher', "Usages pédagogiques déclarés");
+    const dynamicBody = getDynamicTasksText(profile, '#dynamic-tasks-container-teacher', "Autres usages (spécifiés par l'enseignant)");
     
-    let body = "";
-    if (!predefinedBody.trim() && !dynamicBody.trim()) {
-        body = "Aucun usage spécifique n'a été déclaré.\n";
-    } else {
-        body = predefinedBody + dynamicBody;
-    }
+    let body = (predefinedBody + dynamicBody).trim() 
+        ? (predefinedBody + dynamicBody) 
+        : "Usages pédagogiques déclarés\n------------------------------\nAucun usage spécifique n'a été déclaré.\n";
     
     return header + policyText + body + getReflectionText(profile) + getIntegrityText(profile);
 }
@@ -421,15 +439,13 @@ function generateResearcherDeclaration() {
     const profile = 'researcher';
     let header = getCommonHeaderText(profile);
 
-    const predefinedBody = getTasksText(profile, 'tasks-section-researcher', "Usages en recherche déclarés (selon la taxonomie GAIDeT)");
-    const dynamicBody = getDynamicTasksText(profile, 'dynamic-tasks-container-researcher', "Autres usages (spécifiés par le chercheur)");
+    const predefinedBody = getCategorizedTasksText(profile, 'tasks-section-researcher', "Usages en recherche déclarés (selon la taxonomie GAIDeT)");
+    const dynamicBody = getDynamicTasksText(profile, '#dynamic-tasks-container-researcher', "Autres usages (spécifiés par le chercheur)");
 
-    let body = "";
-    if (!predefinedBody.trim() && !dynamicBody.trim()) {
-        body = "Aucun usage spécifique n'a été déclaré.\n";
-    } else {
-        body = predefinedBody + dynamicBody;
-    }
+    let body = (predefinedBody + dynamicBody).trim()
+        ? (predefinedBody + dynamicBody)
+        : "Usages en recherche déclarés (selon la taxonomie GAIDeT)\n----------------------------------------------------------\nAucun usage spécifique n'a été déclaré.\n";
 
     return header + body + getReflectionText(profile) + getIntegrityText(profile);
 }
+
