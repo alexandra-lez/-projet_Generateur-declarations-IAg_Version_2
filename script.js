@@ -1,33 +1,118 @@
-// DATA | Version 4, Alexandra Lez & Gemini, 11 septembre 2025
-const studentTasksData = {
-    "NIVEAU 1 : Utilisation limitée": { domains: { "Domaine disciplinaire": ["Trouver inspiration", "Générer des idées", "Explorer un sujet pour mieux le comprendre", "Générer du matériel pour son étude"], "Domaine des langues": ["Identifier ses erreurs et se les faire expliquer", "Reformuler un texte", "Générer un plan pour aider à structurer un texte", "Traduire un texte"]}},
-    "NIVEAU 2 : Utilisation guidée": { domains: { "": ["Analyser des contenus", "Obtenir une rétroaction", "Évaluer la qualité de son travail à partir de critères", "Demander à être confronté relativement à ses idées, à sa démarche", "Diriger les processus de résolution de problèmes"]}},
-    "NIVEAU 3 : Utilisation balisée": { domains: { "": ["Résumer un texte", "Générer un texte", "Réaliser des calculs mathématiques", "Produire du code informatique", "Résoudre des problèmes complexes", "Répondre à une question", "Générer des images, ou contenus multimédias"]}},
-    "NIVEAU 4 : Utilisation libre": { domains: { "": [] }}
-};
-const teacherTasksData = {
-    "Planification et conception": ["Générer des plans de cours", "Créer des exemples ou études de cas", "Concevoir des activités pédagogiques", "Explorer de nouvelles approches pédagogiques"],
-    "Création de matériel de cours": ["Rédiger des notes de cours ou synthèses", "Créer des diapositives de présentation", "Générer du contenu pour supports visuels", "Créer des scénarios ou des simulations"],
-    "Évaluation des apprentissages": ["Rédiger des questions pour examen", "Élaborer des grilles critériées pour évaluation", "Générer des exemples de réponses (bonnes et mauvaises)"],
-    "Soutien aux étudiants et différenciation": ["Créer des exercices de pratique supplémentaires", "Adapter du matériel pour différents niveaux de compétence", "Générer des explications alternatives pour des concepts difficiles"],
-    "Communication et tâches administratives": ["Rédaction de messages pour des forums et des courriels", "Assister à la formulation de rétroactions", "Synthétiser des articles pour le développement professionnel"]
-};
-const gaidetTaxonomyData = {
-    "Conceptualisation": ["Génération idées", "Définition objectif de recherche", "Formulation des questions et hypothèses de recherche", "Évaluation de la faisabilité et des risques", "Test hypothèse préliminaire"],
-    "Revue de littérature": ["Recherche et systématisation de la littérature", "Rédaction de la revue de littérature", "Analyse des tendances du marché ou des environnements des brevets", "Évaluation de la nouveauté de la recherche et identification des lacunes"],
-    "Méthodologie": ["Conception de la recherche", "Développement de protocoles expérimentaux ou de recherche", "Sélection des méthodes de recherche"],
-    "Développement logiciel et automatisation": ["Génération de code", "Optimisation du code", "Automatisation des processus", "Création algorithmes pour analyse de données"],
-    "Gestion des données": ["Collecte de données", "Validation (évaluation de la qualité et de la fiabilité des données)", "Nettoyage des données", "Conservation et organisation des données", "Analyse des données", "Visualisation", "Test de reproductibilité"],
-    "Rédaction et édition": ["Génération de texte", "Relecture et édition", "Synthèse de texte", "Formulation des conclusions", "Adaptation du ton émotionnel", "Traduction", "Reformatage"],
-    "Revue éthique": ["Analyse des biais et des discriminations potentielles", "Analyse des risques éthiques", "Suivi de la conformité aux normes éthiques", "Suivi de la confidentialité des données"],
-    "Supervision": ["Évaluation de la qualité", "Identification des tendances", "Recommandations", "Soutien à la publication"]
-};
-// Assurez-vous que tous vos `contextualTips` sont bien listés ici.
-const contextualTips = {
-    'Usage non spécifié': { title: "Point de vigilance : responsabilité accrue", content: "Pour tout usage non listé, la responsabilité de la justification et du respect de l'intégrité académique vous incombe entièrement. Documentez bien votre processus." },
-    'Générer un texte': { title: "Point de vigilance : voix d'auteur", content: "Le texte généré doit être entièrement retravaillé pour refléter votre style, votre voix et votre pensée critique." },
-    // ... et tous les autres conseils que vous aviez.
-};
+: // DATA | Version 2, Alexandra Lez, 7 septembre 2025 
+const studentTasksData = { 
+  "NIVEAU 1 : Utilisation limitée": { domains: { "Domaine disciplinaire": ["Trouver inspiration", "Générer des idées", "Explorer un sujet pour mieux le comprendre", "Générer du matériel pour son étude"], "Domaine des langues": ["Identifier ses erreurs et se les faire expliquer", "Reformuler un texte", "Générer un plan pour aider à structurer un texte", "Traduire un texte"]}}, 
+  "NIVEAU 2 : Utilisation guidée": { domains: { "": ["Analyser des contenus", "Obtenir une rétroaction", "Évaluer la qualité de son travail à partir de critères", "Demander à être confronté relativement à ses idées, à sa démarche", "Diriger les processus de résolution de problèmes"]}}, 
+  "NIVEAU 3 : Utilisation balisée": { domains: { "": ["Résumer un texte", "Générer un texte", "Réaliser des calculs mathématiques", "Produire du code informatique", "Résoudre des problèmes complexes", "Répondre à une question", "Générer des images, ou contenus multimédias"]}}, 
+  "NIVEAU 4 : Utilisation libre": { domains: { "": [] }} 
+}; 
+const teacherTasksData = { 
+    "Planification et conception": ["Générer des plans de cours", "Créer des exemples ou études de cas", "Concevoir des activités pédagogiques", "Explorer de nouvelles approches pédagogiques"], 
+    "Création de matériel de cours": ["Rédiger des notes de cours ou synthèses", "Créer des diapositives de présentation", "Générer du contenu pour supports visuels", "Créer des scénarios ou des simulations"], 
+    "Évaluation des apprentissages": ["Rédiger des questions pour examen", "Élaborer des grilles critériées pour évaluation", "Générer des exemples de réponses (bonnes et mauvaises)"], 
+    "Soutien aux étudiants et différenciation": ["Créer des exercices de pratique supplémentaires", "Adapter du matériel pour différents niveaux de compétence", "Générer des explications alternatives pour des concepts difficiles"], 
+    "Communication et tâches administratives": ["Rédaction de messages pour des forums et des courriels", "Assister à la formulation de rétroactions", "Synthétiser des articles pour le développement professionnel"] 
+}; 
+const gaidetTaxonomyData = { 
+    "Conceptualisation": ["Génération idées", "Définition objectif de recherche", "Formulation des questions et hypothèses de recherche", "Évaluation de la faisabilité et des risques", "Test hypothèse préliminaire"], 
+    "Revue de littérature": ["Recherche et systématisation de la littérature", "Rédaction de la revue de littérature", "Analyse des tendances du marché  ou des environnements des brevets", "Évaluation de la nouveauté de la recherche et identification des lacunes"], 
+    "Méthodologie": ["Conception de la recherche", "Développement de protocoles expérimentaux ou de recherche", "Sélection des méthodes de recherche"], 
+    "Développement logiciel et automatisation": ["Génération de code", "Optimisation du code", "Automatisation des processus", "Création algorithmes pour analyse de données"], 
+    "Gestion des données": ["Collecte de données", "Validation (évaluation de la qualité et de la fiabilité des données)", "Nettoyage des données", "Conservation et organisation des données", "Analyse des données", "Visualisation", "Test de reproductibilité"], 
+    "Rédaction et édition": ["Génération de texte", "Relecture et édition", "Synthèse de texte", "Formulation des conclusions", "Adaptation du ton émotionnel", "Traduction", "Reformatage"], 
+    "Revue éthique": ["Analyse des biais et des discriminations potentielles", "Analyse des risques éthiques", "Suivi de la conformité aux normes éthiques", "Suivi de la confidentialité des données"], 
+    "Supervision": ["Évaluation de la qualité", "Identification des tendances", "Recommandations", "Soutien à la publication"] 
+}; 
+const contextualTips = { 
+    // General 
+    'Usage non spécifié': { title: "Point de vigilance : responsabilité accrue", content: "Pour tout usage non listé, la responsabilité de la justification et du respect de l'intégrité académique vous incombe entièrement. Documentez bien votre processus." }, 
+
+    // Personne enseignante 
+    'Générer des plans de cours': { title: "Bonne pratique", content: "Utilisez l'IA pour générer une structure de base, mais assurez-vous de la personnaliser en y intégrant votre expertise, votre expérience, le contexte de votre cours et les besoins spécifiques de vos étudiantes et étudiants." }, 
+    'Créer des exemples ou études de cas': { title: "Point de vigilance : authenticité", content: "Dans certaines situations, fournir des exemples de réponses appropriées ou inappropriées est un moyen efficace de clarifier vos attentes. Par exemple, si vous utilisez une IAG pour produire des exemples d’erreurs, assurez-vous qu’ils sont représentatifs d’erreurs fréquentes et qu’ils sont instructifs." }, 
+    'Concevoir des activités pédagogiques': { title: "Bonne pratique", content: "Assurez-vous que chaque activité proposée par l’IAG que vous décidez de mettre en œuvre soit pertinente pour votre contexte et directement liée à un objectif d’apprentissage précis de votre cours." }, 
+    'Rédiger des notes de cours ou synthèses': { title: "Point de vigilance : exactitude et profondeur", content: "Validez chaque information. L'IAg peut résumer, mais c'est votre expertise qui ajoute la profondeur et la perspective critique nécessaires." }, 
+    'Créer des diapositives de présentation': { title: "Bonne pratique", content: "Servez-vous de l'IAg pour structurer vos idées et obtenir des suggestions de visuels. Soyez cependant vigilant avec les outils de création automatique, car ils tendent à surcharger les diapositives d'informations ou à proposer des images peu pertinentes. Rappelez-vous que chaque diapositive doit appuyer votre discours avec clarté et concision, sans jamais le remplacer." }, 
+    'Générer du contenu pour supports visuels': { title: "Point de vigilance : pertinence et clarté", content: " Un bon visuel (schéma, infographie) simplifie une idée complexe. Les logiciels d’IA pour créer des présentations peuvent être très pratiques, mais ils peuvent parfois surcharger les diapositives ou produire des images peu pertinentes. Veillez à ce que le résultat soit clair, non encombré et qu’il reflète fidèlement votre message." }, 
+    'Rédiger des questions pour examen': { title: "Point de vigilance : validité et équité", content: "Assurez-vous que les questions générées évaluent le concept ou la compétence appropriés et qu’elles sont exemptes d’imprécisions ou d’erreurs." }, 
+    'Élaborer des grilles critériées pour évaluation': { title: "Bonne pratique : clarté des critères", content: "Une grille générée par l'IAg est un bon point de départ. Affinez les descripteurs de chaque critère pour qu'ils soient clairs, observables et sans ambiguïté pour vous et vos personnes étudiantes." }, 
+    'Rédaction de messages pour des forums et des courriels': { title: "Point de vigilance : ton et personnalisation", content: "Ajustez toujours le ton du message pour qu'il corresponde à votre style de communication habituel. Certains outils d’IAg peuvent proposer des formulations trop formelles ou impersonnelles." }, 
+    'Assister à la formulation de rétroactions': { title: "Point de vigilance : rétroaction constructive", content: " L’IAG peut détecter des erreurs, mais une rétroaction efficace doit être constructive, personnalisée et humaine. Veillez à ce que vos commentaires se concentrent sur les étapes suivantes et le développement des personnes étudiantes." }, 
+    'Explorer de nouvelles approches pédagogiques': { title: "Bonne pratique : innovation éclairée", content: " Utilisez l’IAG comme un partenaire de remue-méninges pour découvrir des stratégies pédagogiques. Assurez-vous toujours que ces stratégies sont appuyées par la recherche en pédagogie et ajustez-les en fonction de vos besoins spécifiques." }, 
+    'Créer des scénarios ou des simulations': { title: "Point de vigilance : réalisme et objectifs", content: " Les scénarios doivent être plausibles et directement liés aux objectifs d'apprentissage. Les outils d’IAg très souvent doivent être bien encadrés par un contexte spécifique pour éviter les scénarios non pertinents, stéréotypés ou caricaturaux." }, 
+    'Générer des exemples de réponses (bonnes et mauvaises)': { title: "Bonne pratique : outil didactique", content: "Dans certaines situations, fournir des exemples de réponses appropriées ou inappropriées est un moyen efficace de clarifier vos attentes. Par exemple, si vous utilisez une IAG pour produire des exemples d’erreurs, assurez-vous qu’ils sont représentatifs d’erreurs fréquentes et qu’ils sont instructifs." }, 
+    'Créer des exercices de pratique supplémentaires': { title: "Point de vigilance : qualité et cohérence", content: "Vérifiez que la difficulté et le format des exercices sont cohérents avec ceux vus en classe. La qualité prime sur la quantité." }, 
+    'Adapter du matériel pour différents niveaux de compétence': { title: "Bonne pratique : différenciation", content: "Pour différencier efficacement, fournissez à l'IAg le texte original et des instructions claires (par exemple, « Simplifie ce texte pour un niveau débutant », « Ajoute des questions de réflexion pour un niveau avancé », etc.)." }, 
+    'Générer des explications alternatives pour des concepts difficiles': { title: "Bonne pratique : flexibilité", content: "L'IAg peut proposer des analogies ou des métaphores variées pour un même concept. C'est un bon moyen d'aider les personnes étudiantes ayant différentes manières d’apprendre." }, 
+    'Synthétiser des articles pour le développement professionnel': { title: "Point de vigilance : perte de nuance", content: "Un résumé effectué à l’aide d'un outil d’IAg est un point de départ. Toutefois, il demeure indispensable de lire et d’analyser attentivement le texte original afin de bien comprendre le sujet." }, 
+
+    // GAIDET / Chercheur 
+    'Génération idées': { title: "Bonne pratique", content: "Utilisez l'IAg pour la divergence (générer beaucoup d'idées), mais gardez le contrôle de la convergence (choisir, critiquer et affiner les meilleures)." }, 
+    'Définition objectif de recherche': { title: "Point de vigilance", content: "L'IAg peut aider à clarifier un objectif, mais celui-ci doit découler de votre compréhension profonde du domaine et d'une lacune réelle dans les connaissances." }, 
+    'Formulation des questions et hypothèses de recherche': { title: "Bonne pratique", content: "Les outils d’IAg s’avèrent très intéressants pour reformuler ou explorer des angles différents, mais, assurez-vous que l'hypothèse finale est testable, précise et pertinente pour votre projet." }, 
+    'Évaluation de la faisabilité et des risques': { title: "Point de vigilance", content: "L'IAg peut identifier des risques communs, mais ne peut pas évaluer les contraintes contextuelles (par exemple, accès aux données, budget, temps). Cette évaluation reste une responsabilité humaine." }, 
+    'Test hypothèse préliminaire': { title: "Bonne pratique", content: "L’IAg peut s’avérer très utile pour des simulations ou des modélisations basées sur des données existantes. Considérez ceci comme une exploration, pas une validation formelle." }, 
+    'Recherche et systématisation de la littérature': { title: "Point de vigilance : sources fantômes", content: "Validez chaque référence générée dans des bases de données académiques. L'IAg peut « halluciner » des sources qui n'existent pas." }, 
+    'Rédaction de la revue de littérature': { title: "Point de vigilance : plagiat et synthèse", content: "Le texte généré par une IAg est plutôt une compilation qu’une synthèse critique. Vous devez réécrire, analyser et intégrer les sources pour créer un argumentaire original." }, 
+    'Analyse des tendances du marché  ou des environnements des brevets': { title: "Bonne pratique", content: "L'IAg excelle à analyser de grands volumes de données. Utilisez-la pour identifier des motifs, mais validez les conclusions avec votre expertise du domaine." }, 
+    'Évaluation de la nouveauté de la recherche et identification des lacunes': { title: "Point de vigilance", content: " L’IAg peut identifier des lacunes apparentes, mais l’évaluation de la nouveauté requiert une connaissance fine du domaine, que seule l’expertise humaine peut fournir pour le moment." }, 
+    'Conception de la recherche': { title: "Bonne pratique", content: "L’IAg peut être très utile pour explorer différentes approches méthodologiques. Votre rôle est de choisir et de justifier le devis le plus approprié pour répondre à votre question de recherche." }, 
+    'Développement de protocoles expérimentaux ou de recherche': { title: "Point de vigilance", content: "L'IAg peut générer des protocoles standards. Assurez-vous de les adapter précisément à votre contexte et de détailler chaque étape pour garantir la reproductibilité.." }, 
+    'Sélection des méthodes de recherche': { title: "Point de vigilance", content: "L'IAg peut suggérer des méthodes populaires, mais pas toujours les plus pertinentes. Justifiez votre choix en fonction de votre cadre théorique et de vos objectifs." }, 
+    'Génération de code': { title: "Point de vigilance : erreurs", content: "Le code peut sembler fonctionnel, mais contenir des erreurs logiques. Comprenez chaque ligne et testez-le rigoureusement avant de l'utiliser pour votre analyse." }, 
+    'Optimisation du code': { title: "Bonne pratique", content: "L’IAg peut s’avérer très pratique pour améliorer l'efficacité du code. Vérifiez que l'optimisation ne modifie pas le résultat de l'analyse." }, 
+    'Automatisation des processus': { title: "Bonne pratique", content: "Les outils d’IAg sont très pratiques pour les tâches répétitives. Documentez clairement le processus automatisé pour assurer la transparence et la reproductibilité." }, 
+    'Création algorithmes pour analyse de données': { title: "Point de vigilance", content: "La conception d'un algorithme pertinent requiert une expertise profonde. Utilisez l'IAg comme un assistant, mais la logique et la validation de l'algorithme doivent être humaines." }, 
+    'Collecte de données': { title: "Point de vigilance : éthique et biais", content: "Si vous utilisez des outils d’IAg pour la collecte (par exemple, web scraping), assurez-vous de respecter les conditions d'utilisation et d'être conscient des biais potentiels dans les données collectées." }, 
+    'Validation (évaluation de la qualité et de la fiabilité des données)': { title: "Point de vigilance", content: "L'IAg peut identifier des anomalies, mais la décision finale sur la validité d'une donnée repose sur votre jugement et votre connaissance du contexte." }, 
+    'Nettoyage des données': { title: "Bonne pratique", content: "Certains outils d’IAg sont très efficaces pour les tâches de nettoyage de base. Conservez une trace de toutes les modifications apportées pour garantir la traçabilité." }, 
+    'Conservation et organisation des données': { title: "Bonne pratique", content: "L'IAg peut aider à structurer et à organiser les données. Assurez-vous que le plan de gestion de données est clair et respecte les normes de votre établissement." }, 
+    'Analyse des données': { title: "Point de vigilance : biais d'interprétation", content: "L'IAg identifie des corrélations, pas des causalités. L'interprétation des résultats et leur mise en contexte exigent votre expertise scientifique." }, 
+    'Visualisation': { title: "Bonne pratique", content: "Utilisez l'IAg pour générer différents types de graphiques, mais choisissez celui qui représente vos données de la manière la plus claire et la plus honnête." }, 
+    'Test de reproductibilité': { title: "Point de vigilance", content: "L'IAg peut aider à réexécuter un code, mais la reproductibilité implique de comprendre et de pouvoir expliquer chaque étape de l'analyse, ce qui reste une tâche humaine pour le moment." }, 
+    'Génération de texte': { title: "Point de vigilance : voix d'auteur", content: "Utilisez le texte généré comme une première ébauche. Votre travail consiste à bien analyser sa pertinence et à l’infuser votre voix, votre style et votre argumentation." }, 
+    'Relecture et édition': { title: "Bonne pratique", content: "L’IAg est un très bon outil pour corriger la grammaire, la syntaxe et améliorer la fluidité. Assurez-vous que les corrections ne changent pas le sens de vos propos." }, 
+    'Synthèse de texte': { title: "Point de vigilance", content: "Le résumé de l'IAg est factuel, pas critique. Il vous appartient d'analyser et de synthétiser les idées principales dans le contexte de votre propre recherche." }, 
+    'Formulation des conclusions': { title: "Point de vigilance", content: "Les conclusions doivent découler directement de vos résultats et de votre analyse. L'IAg peut aider à les formuler, mais ne peut pas les créer." }, 
+    'Adaptation du ton émotionnel': { title: "Bonne pratique", content: "Les outils d’IAG peuvent s’avérer très utiles pour adapter le style d’un texte à divers publics cibles (par exemple, la vulgarisation scientifique, l’enseignement, etc.). Toutefois, il est crucial de rester vigilant quant au choix du ton pour préserver son authenticité." }, 
+    'Traduction': { title: "Point de vigilance : nuances terminologiques", content: "La traduction réalisée à l’aide d’outils d’IAg est souvent de bonne qualité, mais peut manquer des termes techniques précis de votre domaine. Une révision par une personne experte demeure essentielle." }, 
+    'Reformatage': { title: "Bonne pratique", content: "Un outil d’IAg peut être très efficace pour vous aider à adapter un manuscrit aux normes de différentes revues. Vérifiez toujours le résultat final attentivement." }, 
+    'Analyse des biais et des discriminations potentielles': { title: "Point de vigilance", content: "Si vous vous servez d’une IAG pour analyser de biais, il faut considérer que l’outil lui-même peut être biaisé. Considérez-le comme un outil de détection préliminaire, mais assurez-vous de mener une analyse éthique approfondie vous-même." }, 
+    'Analyse des risques éthiques': { title: "Point de vigilance", content: "L'IAg peut lister des risques standards, mais ne peut pas évaluer la complexité d'une situation éthique particulière. Consultez toujours les comités d'éthique compétents." }, 
+    'Suivi de la conformité aux normes éthiques': { title: "Point de vigilance", content: "L'IAg peut vérifier la présence de certains éléments (par exemple, consentement), mais ne peut pas juger de la validité réelle de la conformité éthique." }, 
+    'Suivi de la confidentialité des données': { title: "Point de vigilance : ne soumettez pas de données confidentielles", content: "N'utilisez jamais de données de recherche confidentielles ou personnelles dans une IAg d’accès publique. Dans certaines situations, l’IA est plus appropriée pour élaborer des stratégies de protection que pour analyser les données elles-mêmes." }, 
+    'Évaluation de la qualité': { title: "Point de vigilance", content: "L'IAg peut évaluer la structure ou la clarté, mais pas la validité scientifique ou la pertinence d'un argument. Cette évaluation critique est au cœur du travail de recherche." }, 
+    'Identification des tendances': { title: "Bonne pratique", content: "L'IAg peut identifier des tendances dans de grands ensembles de données (par exemple, résultats de recherche), mais c'est à vous d'interpréter leur signification." }, 
+    'Recommandations': { title: "Point de vigilance", content: "Les recommandations générées par des outils d’IAg sont basées sur des modèles statistiques. Elles doivent être évaluées de manière critique à la lumière de votre expertise et des objectifs de votre recherche." }, 
+    'Soutien à la publication': { title: "Bonne pratique", content: " L’IAg peut être très utile pour rédiger une lettre de présentation ou des réponses aux évaluateurs. Cependant, il est important de toujours personnaliser le contenu pour qu’il soit spécifique et sincère." }, 
+
+  // Étudiant avec balises 
+    // NIVEAU 1 
+    "Trouver inspiration": { title: "Bonne pratique", content: "Utilisez l'IAg pour explorer différents angles d'un sujet, mais assurez-vous de développer votre propre perspective originale." }, 
+    "Générer des idées": { title: "Bonne pratique", content: "L'IAg est un bon partenaire pour un remue-méninges. Traitez ses suggestions comme un point de départ à critiquer et à enrichir." }, 
+    "Explorer un sujet pour mieux le comprendre": { title: "Point de vigilance : exactitude", content: "L'IAg peut simplifier à l'excès ou commettre des erreurs. Validez toujours les informations importantes avec les sources vues en cours ou des références académiques." }, 
+    "Générer du matériel pour son étude": { title: "Bonne pratique", content: "Créez des aide-mémoires, des cartes éclair (flashcards) ou des quiz personnalisés pour réviser la matière de manière active." }, 
+    "Identifier ses erreurs et se les faire expliquer": { title: "Bonne pratique", content: "Soumettez un de vos textes pour obtenir une correction détaillée et demandez des explications sur les règles de grammaire que vous n'avez pas respectées." }, 
+    "Reformuler un texte": { title: "Bonne pratique", content: "Utilisez cette fonction pour clarifier un passage complexe ou pour varier votre vocabulaire, puis réécrivez la phrase avec vos propres mots." }, 
+    "Générer un plan pour aider à structurer un texte": { title: "Bonne pratique", content: "Un plan généré par une IA est une excellente base. Adaptez-le en fonction de votre argumentation, de vos idées et des exigences spécifiques du travail." }, 
+    "Traduire un texte": { title: "Point de vigilance : précision", content: "La traduction automatique manque souvent de précision pour le jargon technique ou les expressions idiomatiques. Une révision par une personne compétente est essentielle pour un travail important." }, 
+    // NIVEAU 2 
+    "Analyser des contenus": { title: "Bonne pratique", content: "Demandez à l'IAg d'identifier les arguments principaux, les thèmes récurrents ou le ton d'un article pour orienter votre propre analyse critique." }, 
+    "Obtenir une rétroaction": { title: "Bonne pratique", content: "Sollicitez une rétroaction sur la clarté, la structure ou la cohérence de votre argumentation avant de soumettre un travail." }, 
+    "Évaluer la qualité de son travail à partir de critères": { title: "Bonne pratique", content: "Soumettez votre travail et demandez à l'IAg de l'évaluer de manière formative pour identifier vos points forts et vos points à améliorer. Demandez des explications et des précisions pour comprendre vos erreurs." }, 
+    "Demander à être confronté relativement à ses idées, à sa démarche": { title: "Bonne pratique", content: "Présentez votre argumentaire à l'IAg et demandez-lui de jouer le rôle de l'« avocat du diable » en soulevant des contre-arguments ou des failles potentielles." }, 
+    "Diriger les processus de résolution de problèmes": { title: "Bonne pratique", content: "Décrivez un problème complexe et demandez à l'IAg de proposer une série d'étapes ou différentes méthodes pour le résoudre." }, 
+    // NIVEAU 3 
+    "Résumer un texte": { title: "Point de vigilance", content: "Le travail de synthèse consiste avant tout en un exercice intellectuel permettant de comprendre et de hiérarchiser les informations. Déléguer cette tâche à une IAg s’avère pratique, mais pourrait nous priver d’une étape d’appropriation des connaissances." }, 
+    "inspiration": { title: "Point de vigilance : voix d'auteur", content: "Le texte généré doit être entièrement retravaillé pour refléter votre style, votre voix et votre pensée critique." }, 
+    "Réaliser des calculs mathématiques": { title: "Bonne pratique", content: "Utilisez l'IAg comme une calculatrice avancée pour vérifier des calculs complexes, en lui demandant de détailler les étapes pour valider la méthode." }, 
+    "Produire du code informatique": { title: "Bonne pratique", content: "L'IAg peut générer des fonctions ou des scripts pour automatiser des tâches, vous permettant de vous concentrer sur la logique globale du programme." }, 
+    "Résoudre des problèmes complexes": { title: "Point de vigilance : boîte noire", content: "Ne tenez jamais une réponse proposée par une IAg pour acquise. Vous devez comprendre les hypothèses sous-jacentes au modèle et être capable d'expliquer pourquoi la solution est pertinente." }, 
+    "Répondre à une question": { title: "Point de vigilance : sources fantômes", content: "L'IAg peut « halluciner », inventer des informations et des sources qui n'existent pas. Toute information utilisée dans un travail doit être vérifiée à partir de sources fiables." }, 
+    "Générer des images, ou contenus multimédias": { title: "Point de vigilance", content: "Avant d’utiliser une image ou une vidéo générée par une IA, vérifiez ses droits d’utilisation, analysez les biais qu’elle pourrait contenir et mentionnez toujours son origine artificielle pour garantir l’intégrité académique et dans certains contextes, éviter la désinformation." }, 
+
+
+  }; 
+
 
 
 // --- INITIALISATION ---
