@@ -14,7 +14,7 @@ const teacherTasksData = {
 };
 const gaidetTaxonomyData = {
     "Conceptualisation": ["Génération idées", "Définition objectif de recherche", "Formulation des questions et hypothèses de recherche", "Évaluation de la faisabilité et des risques", "Test hypothèse préliminaire"],
-    "Revue de littérature": ["Recherche et systématisation de la littérature", "Rédaction de la revue de littérature", "Analyse des tendances du marché  ou des environnements des brevets", "Évaluation de la nouveauté de la recherche et identification des lacunes"],
+    "Revue de littérature": ["Recherche et systématisation de la littérature", "Rédaction de la revue de littérature", "Analyse des tendances du marché ou des environnements des brevets", "Évaluation de la nouveauté de la recherche et identification des lacunes"],
     "Méthodologie": ["Conception de la recherche", "Développement de protocoles expérimentaux ou de recherche", "Sélection des méthodes de recherche"],
     "Développement logiciel et automatisation": ["Génération de code", "Optimisation du code", "Automatisation des processus", "Création algorithmes pour analyse de données"],
     "Gestion des données": ["Collecte de données", "Validation (évaluation de la qualité et de la fiabilité des données)", "Nettoyage des données", "Conservation et organisation des données", "Analyse des données", "Visualisation", "Test de reproductibilité"],
@@ -22,6 +22,19 @@ const gaidetTaxonomyData = {
     "Revue éthique": ["Analyse des biais et des discriminations potentielles", "Analyse des risques éthiques", "Suivi de la conformité aux normes éthiques", "Suivi de la confidentialité des données"],
     "Supervision": ["Évaluation de la qualité", "Identification des tendances", "Recommandations", "Soutien à la publication"]
 };
+
+// Liste de tâches prédéfinies
+const sansBalisesPredefinedTasks = [
+    "Clarifier un concept complexe.",
+    "Identifier ses erreurs et se les faire expliquer.",
+    "Générer une première ébauche pour un travail de rédaction.",
+    "Obtenir une première ébauche de plan de travail.",
+    "Reformuler un de mes paragraphes pour améliorer le style.",
+    "Trouver des synonymes ou varier mon vocabulaire.",
+    "Organiser mes idées avant de commencer la rédaction."
+    
+];
+
 const contextualTips = {
     // General
     'Usage non spécifié': { title: "Point de vigilance : responsabilité accrue", content: "Pour tout usage non listé, la responsabilité de la justification et du respect de l'intégrité académique vous incombe entièrement. Documentez bien votre processus." },
@@ -53,7 +66,7 @@ const contextualTips = {
     'Test hypothèse préliminaire': { title: "Bonne pratique", content: "L’IAg peut s’avérer très utile pour des simulations ou des modélisations basées sur des données existantes. Considérez ceci comme une exploration, pas une validation formelle." },
     'Recherche et systématisation de la littérature': { title: "Point de vigilance : sources fantômes", content: "Validez chaque référence générée dans des bases de données académiques. L'IAg peut « halluciner » des sources qui n'existent pas." },
     'Rédaction de la revue de littérature': { title: "Point de vigilance : plagiat et synthèse", content: "Le texte généré par une IAg est plutôt une compilation qu’une synthèse critique. Vous devez réécrire, analyser et intégrer les sources pour créer un argumentaire original." },
-    'Analyse des tendances du marché  ou des environnements des brevets': { title: "Bonne pratique", content: "L'IAg excelle à analyser de grands volumes de données. Utilisez-la pour identifier des motifs, mais validez les conclusions avec votre expertise du domaine." },
+    'Analyse des tendances du marché ou des environnements des brevets': { title: "Bonne pratique", content: "L'IAg excelle à analyser de grands volumes de données. Utilisez-la pour identifier des motifs, mais validez les conclusions avec votre expertise du domaine." },
     'Évaluation de la nouveauté de la recherche et identification des lacunes': { title: "Point de vigilance", content: " L’IAg peut identifier des lacunes apparentes, mais l’évaluation de la nouveauté requiert une connaissance fine du domaine, que seule l’expertise humaine peut fournir pour le moment." },
     'Conception de la recherche': { title: "Bonne pratique", content: "L’IAg peut être très utile pour explorer différentes approches méthodologiques. Votre rôle est de choisir et de justifier le devis le plus approprié pour répondre à votre question de recherche." },
     'Développement de protocoles expérimentaux ou de recherche': { title: "Point de vigilance", content: "L'IAg peut générer des protocoles standards. Assurez-vous de les adapter précisément à votre contexte et de détailler chaque étape pour garantir la reproductibilité.." },
@@ -85,7 +98,7 @@ const contextualTips = {
     'Recommandations': { title: "Point de vigilance", content: "Les recommandations générées par des outils d’IAg sont basées sur des modèles statistiques. Elles doivent être évaluées de manière critique à la lumière de votre expertise et des objectifs de votre recherche." },
     'Soutien à la publication': { title: "Bonne pratique", content: " L’IAg peut être très utile pour rédiger une lettre de présentation ou des réponses aux évaluateurs. Cependant, il est important de toujours personnaliser le contenu pour qu’il soit spécifique et sincère." },
 
-  // Étudiant avec balises
+    // Étudiant avec balises
     // NIVEAU 1
     "Trouver inspiration": { title: "Bonne pratique", content: "Utilisez l'IAg pour explorer différents angles d'un sujet, mais assurez-vous de développer votre propre perspective originale." },
     "Générer des idées": { title: "Bonne pratique", content: "L'IAg est un bon partenaire pour un remue-méninges. Traitez ses suggestions comme un point de départ à critiquer et à enrichir." },
@@ -103,15 +116,23 @@ const contextualTips = {
     "Diriger les processus de résolution de problèmes": { title: "Bonne pratique", content: "Décrivez un problème complexe et demandez à l'IAg de proposer une série d'étapes ou différentes méthodes pour le résoudre." },
     // NIVEAU 3
     "Résumer un texte": { title: "Point de vigilance", content: "Le travail de synthèse consiste avant tout en un exercice intellectuel permettant de comprendre et de hiérarchiser les informations. Déléguer cette tâche à une IAg s’avère pratique, mais pourrait nous priver d’une étape d’appropriation des connaissances." },
-    "inspiration": { title: "Point de vigilance : voix d'auteur", content: "Le texte généré doit être entièrement retravaillé pour refléter votre style, votre voix et votre pensée critique." },
+    "Générer un texte": { title: "Point de vigilance : voix d'auteur", content: "Le texte généré doit être entièrement retravaillé pour refléter votre style, votre voix et votre pensée critique." },
     "Réaliser des calculs mathématiques": { title: "Bonne pratique", content: "Utilisez l'IAg comme une calculatrice avancée pour vérifier des calculs complexes, en lui demandant de détailler les étapes pour valider la méthode." },
     "Produire du code informatique": { title: "Bonne pratique", content: "L'IAg peut générer des fonctions ou des scripts pour automatiser des tâches, vous permettant de vous concentrer sur la logique globale du programme." },
     "Résoudre des problèmes complexes": { title: "Point de vigilance : boîte noire", content: "Ne tenez jamais une réponse proposée par une IAg pour acquise. Vous devez comprendre les hypothèses sous-jacentes au modèle et être capable d'expliquer pourquoi la solution est pertinente." },
     "Répondre à une question": { title: "Point de vigilance : sources fantômes", content: "L'IAg peut « halluciner », inventer des informations et des sources qui n'existent pas. Toute information utilisée dans un travail doit être vérifiée à partir de sources fiables." },
     "Générer des images, ou contenus multimédias": { title: "Point de vigilance", content: "Avant d’utiliser une image ou une vidéo générée par une IA, vérifiez ses droits d’utilisation, analysez les biais qu’elle pourrait contenir et mentionnez toujours son origine artificielle pour garantir l’intégrité académique et dans certains contextes, éviter la désinformation." },
 
-
-  };
+// CONSEILS POUR L'USAGE NON BALISÉ  
+    "Clarifier un concept complexe.": { title: "Bonne pratique", content: "Soumettez vos idées en vrac à l'IAg et demandez-lui de les regrouper par thèmes ou de les organiser sous forme de carte conceptuelle. Cela peut vous aider à visualiser la structure de votre pensée." },
+    "Identifier ses erreurs et se les faire expliquer.": { title: "Bonne pratique", content: "Soumettez un de vos textes pour obtenir une correction détaillée et demandez des explications sur les règles de grammaire que vous n'avez pas respectées." },
+    "Générer une première ébauche pour un travail de rédaction.": { title: "Bonne pratique", content: "Soumettez vos idées en vrac à l'IAg et demandez-lui de les regrouper par thèmes ou de les organiser sous forme de carte conceptuelle. Cela peut vous aider à visualiser la structure de votre pensée." },
+    "Obtenir une première ébauche de plan de travail.": { title: "Point de vigilance", content: "Un plan généré est un point de départ, pas une finalité. Assurez-vous que la structure finale corresponde à votre propre argumentation et non à la logique de l'IAg." },
+    "Reformuler un de mes paragraphes pour améliorer le style.": { title: "Bonne pratique", content: "Ne vous contentez pas de copier-coller. Analysez *pourquoi* la reformulation de l'IAg est meilleure : le choix des mots, la structure de la phrase, la fluidité. C'est un excellent exercice pour améliorer votre propre style d'écriture." },
+    "Trouver des synonymes ou varier mon vocabulaire.": { title: "Point de vigilance", content: "Un synonyme n'est pas toujours interchangeable. Vérifiez toujours la nuance et le contexte du mot suggéré par l'IAg pour éviter les contresens." },
+    "Organiser mes idées avant de commencer la rédaction.": { title: "Bonne pratique", content: "Soumettez vos idées en vrac à l'IAg et demandez-lui de les regrouper par thèmes ou de les organiser sous forme de carte conceptuelle. Cela peut vous aider à visualiser la structure de votre pensée." },
+ 
+};
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', () => {
@@ -125,6 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if(document.getElementById('tasks-section-balises')) buildStudentBalisesTasksHTML();
     if(document.getElementById('tasks-section-teacher')) buildTeacherTasksHTML();
     if(document.getElementById('tasks-section-researcher')) buildResearcherTasksHTML();
+    // MODIFICATION 3 : Appel de la nouvelle fonction pour créer la liste de tâches à cocher
+    if(document.getElementById('suggestions-container-sans-balises')) buildSansBalisesPredefinedTasksHTML();
 
     updateAllDropdowns();
 });
@@ -175,6 +198,23 @@ function buildStudentBalisesTasksHTML() {
         container.appendChild(details);
     });
 }
+
+// MODIFICATION 2 : La fonction de suggestion a été transformée pour créer une liste de tâches à cocher.
+function buildSansBalisesPredefinedTasksHTML() {
+    const container = document.getElementById('suggestions-container-sans-balises');
+    if (!container) return;
+
+    const title = document.createElement('h4');
+    title.innerHTML = `Pistes d'usages courants (cochez une option ou ajouter un usage) :`;
+    container.appendChild(title);
+    
+    // On utilise la fonction createTaskItem existante pour créer des éléments interactifs
+    sansBalisesPredefinedTasks.forEach(task => {
+        container.appendChild(createTaskItem(task, 'sans-balises'));
+    });
+}
+
+
 function createTaskItem(task, profile) {
     const item = document.createElement('div');
     item.className = 'task-item';
@@ -196,8 +236,8 @@ function addDynamicTask(type, container = null, profile) {
     const item = document.createElement('div');
     item.className = 'dynamic-task-item';
     const placeholder = (type === 'teacher') ? "Par exemple, création d'une vidéo de synthèse..." 
-                    : (type === 'researcher') ? " Par exemple, transcription d'entrevues..." 
-                    : "Décrivez l'usage...";
+                      : (type === 'researcher') ? " Par exemple, transcription d'entrevues..." 
+                      : "Décrivez l'usage...";
     const tip = contextualTips['Usage non spécifié'];
     item.innerHTML = `
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
@@ -271,9 +311,9 @@ function copyToClipboard(elementId, button) {
 // Logique pour génération
 function generateOutputs(profile) {
     const declarationText = (profile === 'teacher') ? generateTeacherDeclaration()
-                        : (profile === 'researcher') ? generateResearcherDeclaration()
-                        : (profile === 'balises') ? generateStudentBalisesDeclaration()
-                        : generateStudentSansBalisesDeclaration();
+                          : (profile === 'researcher') ? generateResearcherDeclaration()
+                          : (profile === 'balises') ? generateStudentBalisesDeclaration()
+                          : generateStudentSansBalisesDeclaration();
     document.getElementById(`output-${profile}`).value = declarationText;
     document.getElementById(`bibliography-output-${profile}`).value = generateBibliographyText(profile);
 }
@@ -297,10 +337,10 @@ function getCommonHeaderText(profile) {
         const sessionDate = document.getElementById(`session-date-teacher`).value.trim() || "[non spécifiée]";
         return `DÉCLARATION D'USAGE DE L'IAg DANS L'ENSEIGNEMENT\n================================================\n\nPersonne enseignante: ${teacherName}\nCours: ${courseTitle}\nSession: ${sessionDate}\n\nOUTILS D'IAG UTILISÉS: ${llmList}\n\n`;
     } else if (profile === 'researcher') {
-         const researcherName = document.getElementById(`researcher-name-researcher`).value.trim() || "[non spécifié]";
-         const projectTitle = document.getElementById(`project-title-researcher`).value.trim() || "[non spécifié]";
-         const date = document.getElementById(`date-researcher`).value.trim() || "[non spécifiée]";
-         return `DÉCLARATION D'USAGE DE L'IAg EN RECHERCHE\n==========================================\n\nChercheur/Chercheuse: ${researcherName}\nProjet/Article: ${projectTitle}\nDate: ${date}\n\nOUTILS D'IAG UTILISÉS: ${llmList}\n\n`;
+       const researcherName = document.getElementById(`researcher-name-researcher`).value.trim() || "[non spécifié]";
+       const projectTitle = document.getElementById(`project-title-researcher`).value.trim() || "[non spécifié]";
+       const date = document.getElementById(`date-researcher`).value.trim() || "[non spécifiée]";
+       return `DÉCLARATION D'USAGE DE L'IAg EN RECHERCHE\n==========================================\n\nChercheur/Chercheuse: ${researcherName}\nProjet/Article: ${projectTitle}\nDate: ${date}\n\nOUTILS D'IAG UTILISÉS: ${llmList}\n\n`;
     }
     else {
         const teacherName = document.getElementById(`teacher-name-${profile}`).value.trim() || "[non spécifié]";
@@ -312,10 +352,12 @@ function getCommonHeaderText(profile) {
     }
 }
 function getReflectionText(profile) {
-    const reflectionProcess = document.getElementById(`reflection-process-${profile}`).value.trim();
+    const reflectionProcessElem = document.getElementById(`reflection-process-${profile}`);
     const reflectionLimitsElem = document.getElementById(`reflection-limits-${profile}`);
-    const reflectionLimits = reflectionLimitsElem ? reflectionLimitsElem.value.trim() : "";
     const reflectionSkillElem = document.getElementById(`reflection-skill-${profile}`);
+
+    const reflectionProcess = reflectionProcessElem ? reflectionProcessElem.value.trim() : "";
+    const reflectionLimits = reflectionLimitsElem ? reflectionLimitsElem.value.trim() : "";
     const reflectionSkill = reflectionSkillElem ? reflectionSkillElem.value.trim() : "";
 
     if (!reflectionProcess && !reflectionLimits && !reflectionSkill) return "";
@@ -327,9 +369,9 @@ function getReflectionText(profile) {
     return text;
 }
 function getIntegrityText(profile) {
-    const text = (profile === 'teacher') ? `l'enseignant(e) confirme avoir respecté sa checklist d'intégrité.`
-               : (profile === 'researcher') ? `le chercheur ou la chercheuse confirme avoir respecté sa checklist d'intégrité.`
-               : `l'étudiant(e) confirme avoir respecté sa checklist d'intégrité et assume l'entière responsabilité du contenu final.`;
+    const text = (profile === 'teacher') ? `l'enseignant(e) confirme (information à venir).`
+               : (profile === 'researcher') ? `le chercheur ou la chercheuse confirme (information à venir).`
+               : `l'étudiant(e) confirme avoir respecté les consignes d'usages des outils d'IAg et assume l'entière responsabilité du contenu final.`;
     return `\nENGAGEMENT D'INTÉGRITÉ\n----------------------\nEn générant cette déclaration, ${text}`;
 }
 function getPredefinedTasksText(profile, containerId){
@@ -360,8 +402,8 @@ function getDynamicTasksText(profile, containerId, title) {
         tasks.push({taskLabel, tool, prompt});
     });
     if (tasks.length > 0) {
-         body += `\n**${title}**\n`;
-         tasks.forEach(t => { body += `- ${t.taskLabel}`; if (t.tool) body += ` (IAg: ${t.tool})`; if (t.prompt) body += `\n  Requête: "${t.prompt}"`; body += `\n`; });
+       body += `\n**${title}**\n`;
+       tasks.forEach(t => { body += `- ${t.taskLabel}`; if (t.tool) body += ` (IAg: ${t.tool})`; if (t.prompt) body += `\n  Requête: "${t.prompt}"`; body += `\n`; });
     }
     return body;
 }
@@ -394,14 +436,43 @@ function generateStudentBalisesDeclaration() {
     if (!tasksDeclared) body += "Aucune tâche spécifique n'a été déclarée.\n";
     return header + body + getReflectionText('balises') + getIntegrityText('balises');
 }
+
+// MODIFICATION 4 : La fonction de génération pour "sans-balises" a été entièrement réécrite.
 function generateStudentSansBalisesDeclaration() {
-     let header = getCommonHeaderText('sans-balises');
-     let body = "DÉTAIL DES USAGES DÉCLARÉS\n--------------------------\n";
-     let dynamicBody = getDynamicTasksText('sans-balises', 'dynamic-tasks-container-sans-balises', 'Usages');
-     if(dynamicBody.trim()){ body += dynamicBody; }
-     else { body += "Aucun usage spécifique n'a été déclaré.\n"; }
+    let header = getCommonHeaderText('sans-balises');
+    let body = "DÉTAIL DES USAGES DÉCLARÉS\n--------------------------\n";
+    
+    let predefinedBody = '';
+    const predefinedTasks = [];
+    document.querySelectorAll('#suggestions-container-sans-balises input[type="checkbox"]:checked').forEach(cb => {
+        const taskLabel = cb.dataset.taskName;
+        const tool = cb.closest('.task-item-content').querySelector('.task-tool-selector-sans-balises').value.trim();
+        const prompt = cb.closest('.task-item-content').querySelector('.prompt-input').value.trim();
+        predefinedTasks.push({ taskLabel, tool, prompt });
+    });
+
+    if (predefinedTasks.length > 0) {
+        predefinedBody += `\n**Pistes de réflexion déclarées**\n`;
+        predefinedTasks.forEach(t => {
+            predefinedBody += `- ${t.taskLabel}`;
+            if (t.tool) predefinedBody += ` (IAg: ${t.tool})`;
+            if (t.prompt) predefinedBody += `\n  Requête: "${t.prompt}"`;
+            predefinedBody += `\n`;
+        });
+    }
+
+    let dynamicBody = getDynamicTasksText('sans-balises', 'dynamic-tasks-container-sans-balises', 'Usages personnalisés');
+
+    if (predefinedBody.trim() || dynamicBody.trim()) {
+        body += predefinedBody + dynamicBody;
+    } else {
+        body += "Aucun usage spécifique n'a été déclaré.\n";
+    }
+
     return header + body + getReflectionText('sans-balises') + getIntegrityText('sans-balises');
 }
+
+
 function generateTeacherDeclaration() {
     let header = getCommonHeaderText('teacher');
     let policyLevel = document.querySelector('#teacher-policy-choice input[name="student-level"]:checked');
@@ -433,3 +504,4 @@ function generateResearcherDeclaration() {
     }
      return header + body + getReflectionText('researcher') + getIntegrityText('researcher');
 }
+
