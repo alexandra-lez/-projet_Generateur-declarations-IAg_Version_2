@@ -9,8 +9,18 @@
 </head>
 <body>
     <div id="main-container">
+  <div class="language-selector">
+    <a href="index.html" title="Français">🇫🇷</a>
+    <a href="#" title="English">🇬🇧</a>
+    <a href="#" title="Español">🇪🇸</a>
+</div>
         <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
         <h1>Déclaration pour la recherche</h1>
+        
+        <div style="margin-bottom: 2rem; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; font-size: 0.9em; line-height: 1.5;">
+            <p style="margin:0;">Ce formulaire de déclaration est une adaptation du travail de Suchikova, Y., Tsybuliak, N., Teixeira da Silva, J. A., & Nazarovets, S. (2025). GAIDeT (Generative AI Delegation Taxonomy): A taxonomy for humans to delegate tasks to generative artificial intelligence in scientific research and publishing. Accountability in Research. <a href="https://doi.org/10.1080/08989621.2025.2544331" target="_blank">https://doi.org/10.1080/08989621.2025.2544331</a></p>
+        </div>
+
        <details open class="section">
            <summary><h2><i class="fas fa-book-open"></i> 1. Informations sur le projet</h2></summary>
            <div class="grid-inputs">
@@ -26,11 +36,11 @@
        </details>
         <div class="section" id="tasks-section-researcher">
            <h2><i class="fas fa-tasks"></i> 3. Usages en recherche déclarés (selon la taxonomie GAIDeT)</h2>
-           <p class="helper-text">Cochez les usages pour déclarer votre démarche. Si vous le désirez, vous pouvez cliquez sur <i class="fas fa-info-circle" style="color: var(--accent-dark);"></i> pour afficher une suggestion ou point de vigilance sur l’usage concerné. Si les tâches proposées ne correspondent pas à vos besoins, vous pouvez cliquer sur le bouton <strong>« Ajouter un autre usage »</strong>.</p>
-           <!-- Tâches prédéfiniées générées par JS -->
+           <p class="helper-text">Cochez les usages pour déclarer votre démarche. Si vous le désirez, vous pouvez cliquez sur <i class="fas fa-info-circle" style="color: var(--accent-dark);"></i> pour afficher une suggestion ou point de vigilance sur l’usage concerné. Si les tâches proposées ne correspondent pas à vos besoins, vous pouvez cliquer sur le bouton <strong>« Ajouter un autre usage »</strong>.</p>
            <div id="dynamic-tasks-container-researcher"></div>
            <button onclick="addDynamicTask('researcher', document.getElementById('dynamic-tasks-container-researcher'), 'researcher')" class="button-secondary"><i class="fas fa-plus"></i> Ajouter un autre usage</button>
        </div>
+
         <div id="self-assessment-checklist-researcher" class="section">
            <h2><i class="fas fa-list-check"></i> 5. Liste de vérification</h2>
            <div><label><input type="checkbox" onchange="checkChecklistCompletion('researcher')"> J'ai validé de manière critique toutes les informations factuelles et les analyses générées.</label></div>
@@ -50,8 +60,11 @@
                <textarea id="bibliography-output-researcher" class="output-textarea" readonly></textarea>
            </div>
        </div>
-    </div>
-    <script src="script.js"></script>
+
+<footer>
+            <p>Ressource en développement | version 2.0 | Alexandra lez, alexandra.lez@usherbrooke.ca | septembre 2025</p>
+        </footer>
+    </div> 
+<script src="script.js"></script>
 </body>
 </html>
-
