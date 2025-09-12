@@ -8,17 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
+
     <div id="main-container">
+  <div class="language-selector">
+    <a href="index.html" title="Français">🇫🇷</a>
+    <a href="#" title="English">🇬🇧</a>
+    <a href="#" title="Español">🇪🇸</a>
+</div>
         <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
         <h1>Outil de déclaration (Utilisation non balisée)</h1>
         <details open class="section">
             <summary><h2><i class="fas fa-user-graduate"></i> 1. Informations sur la production</h2></summary>
              <div class="grid-inputs">
-                <div class="input-group"><label for="course-title-sans-balises">Titre et sigle du cours</label><input type="text" id="course-title-sans-balises" placeholder="par exemple, ABC-123..."></div>
-                <div class="input-group"><label for="teacher-name-sans-balises">Nom de la personne enseignante</label><input type="text" id="teacher-name-sans-balises"></div>
-                <div class="input-group"><label for="session-date-sans-balises">Session et date</label><input type="text" id="session-date-sans-balises" placeholder="par exemple, Automne 2025"></div>
-                <div class="input-group"><label for="student-name-sans-balises">Nom de la personne étudiante</label><input type="text" id="student-name-sans-balises"></div>
-                <div class="input-group"><label for="production-title-sans-balises">Titre de la production (par exemple, travail noté 1)</label><input type="text" id="production-title-sans-balises"></div>
+                 <div class="input-group"><label for="course-title-sans-balises">Titre et sigle du cours</label><input type="text" id="course-title-sans-balises" placeholder="par exemple, ABC-123..."></div>
+                 <div class="input-group"><label for="teacher-name-sans-balises">Nom de la personne enseignante</label><input type="text" id="teacher-name-sans-balises"></div>
+                 <div class="input-group"><label for="session-date-sans-balises">Session et date</label><input type="text" id="session-date-sans-balises" placeholder="par exemple, Automne 2025"></div>
+                 <div class="input-group"><label for="student-name-sans-balises">Nom de la personne étudiante</label><input type="text" id="student-name-sans-balises"></div>
+                 <div class="input-group"><label for="production-title-sans-balises">Titre de la production (par exemple, travail noté 1)</label><input type="text" id="production-title-sans-balises"></div>
             </div>
         </details>
         <details open class="section">
@@ -28,17 +34,21 @@
         </details>
         <div class="section">
             <h2><i class="fas fa-tasks"></i> 3. Usages déclarés</h2>
-            <p class="helper-text">Ajoutez et décrivez chaque usage de l'IAg. Soyez aussi précis que possible. Cliquez sur <i class="fas fa-info-circle" style="color: var(--accent-dark);"></i> si vous désirez consulter une suggestion ou point de vigilance concernant l’usage.Si les tâches proposées ne correspondent pas à vos besoins, vous pouvez cliquer sur le bouton <strong>« Ajouter un autre usage »</strong>.</p>
+            <p class="helper-text">Ajoutez et décrivez chaque usage de l'IAg. Soyez aussi précis que possible. Cliquez sur <i class="fas fa-info-circle" style="color: var(--accent-dark);"></i> si vous désirez consulter une suggestion ou point de vigilance concernant l’usage.Si les tâches proposées ne correspondent pas à vos besoins, vous pouvez cliquer sur le bouton <strong>« Ajouter un autre usage »</strong>.</p>
+            
+            <div id="suggestions-container-sans-balises" class="suggestions-box"></div>
+
             <div id="dynamic-tasks-container-sans-balises"></div>
             <button onclick="addDynamicTask('student', document.getElementById('dynamic-tasks-container-sans-balises'), 'sans-balises')" class="button-secondary"><i class="fas fa-plus"></i> Ajouter un usage</button>
         </div>
+
         <div id="self-assessment-checklist-sans-balises" class="section">
             <h2><i class="fas fa-list-check"></i> 5. Liste de vérification</h2>
-<div><label><input type="checkbox" onchange="checkChecklistCompletion('balises')"> J’ai utilisé les outils d’IAg pour obtenir une assistance en évitant de simplement déléguer des tâches.</label></div>
-            <div><label><input type="checkbox" onchange="checkChecklistCompletion('balises')"> J'ai vérifié la pertinence et l’exactitude de toutes les informations générées.  </label></div>
-            <div><label><input type="checkbox" onchange="checkChecklistCompletion('balises')"> Je n'ai soumis aucune information sensible.</label></div>
-            <div><label><input type="checkbox" onchange="checkChecklistCompletion('balises')"> Je suis consciente que je suis l'unique responsable du contenu final.</label>
-</div>
+            <div><label><input type="checkbox" onchange="checkChecklistCompletion('sans-balises')"> J’ai utilisé les outils d’IAg pour obtenir une assistance en évitant de simplement déléguer des tâches.</label></div>
+            <div><label><input type="checkbox" onchange="checkChecklistCompletion('sans-balises')"> J'ai vérifié la pertinence et l’exactitude de toutes les informations générées.  </label></div>
+            <div><label><input type="checkbox" onchange="checkChecklistCompletion('sans-balises')"> Je n'ai soumis aucune information sensible.</label></div>
+            <div><label><input type="checkbox" onchange="checkChecklistCompletion('sans-balises')"> Je suis consciente que je suis l'unique responsable du contenu final.</label></div>
+        </div>
         <div class="section">
             <h2><i class="fas fa-file-alt"></i> 6. Générer la déclaration</h2>
             <button id="generate-btn-sans-balises" onclick="generateOutputs('sans-balises')" disabled><i class="fas fa-cogs"></i> Générer</button>
@@ -51,6 +61,10 @@
                 <textarea id="bibliography-output-sans-balises" class="output-textarea" readonly></textarea>
             </div>
         </div>
+
+<footer>
+            <p>Ressource en développement | version 2.0 | Alexandra lez, alexandra.lez@usherbrooke.ca | septembre 2025</p>
+        </footer>
     </div>
     <script src="script.js"></script>
 </body>
