@@ -764,23 +764,28 @@ details.gaidet-category[open] > summary::before {
   }
 }
 
-
 .language-selector {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
     display: flex;
-    gap: 0.75rem; /* Espace entre les drapeaux */
+    gap: 0.75rem;
 }
 
 .language-selector a {
-    font-size: 1.5rem; 
+    /* On supprime la taille de la police car on utilise des images */
     text-decoration: none;
     transition: transform 0.2s ease-in-out;
+    display: inline-block; /* Important pour que la transformation fonctionne bien */
 }
 
 .language-selector a:hover {
     transform: scale(1.2);
+}
+
+/* On s'assure que les images sont bien alignées verticalement */
+.language-selector img {
+    vertical-align: middle;
 }
 
 footer {
