@@ -9,6 +9,11 @@
 </head>
 <body>
     <div id="main-container">
+  <div class="language-selector">
+    <a href="index.html" title="Français">🇫🇷</a>
+    <a href="#" title="English">🇬🇧</a>
+    <a href="#" title="Español">🇪🇸</a>
+</div>
         <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
         <h1>Déclaration pour personne enseignante</h1>
         <details open class="section">
@@ -39,11 +44,11 @@
 
         <div class="section" id="tasks-section-teacher">
             <h2><i class="fas fa-tasks"></i> 4. Usages pédagogiques déclarés</h2>
-            <p class="helper-text">Cochez les usages de l'IAg dans votre pratique enseignante. Cliquez sur <i class="fas fa-info-circle" style="color: var(--accent-dark);"></i> si vous désirez consulter la suggestion en lien avec cet usage. Si les tâches proposées ne correspondent pas à vos besoins, vous pouvez cliquer sur le bouton <strong>« Ajouter un autre usage »</strong>.</p>
-            <!-- Les tâches prédéfinies sont construites ici par JS -->
+            <p class="helper-text">Cochez les usages de l'IAg dans votre pratique enseignante. Cliquez sur <i class="fas fa-info-circle" style="color: var(--accent-dark);"></i> si vous désirez consulter la suggestion en lien avec cet usage. Si les tâches proposées ne correspondent pas à vos besoins, vous pouvez cliquer sur le bouton <strong>« Ajouter un autre usage »</strong>.</p>
             <div id="dynamic-tasks-container-teacher"></div>
             <button onclick="addDynamicTask('teacher', document.getElementById('dynamic-tasks-container-teacher'), 'teacher')" class="button-secondary"><i class="fas fa-plus"></i> Ajouter un autre usage</button>
         </div>
+
         <div id="self-assessment-checklist-teacher" class="section">
             <h2><i class="fas fa-list-check"></i> 6. Liste de vérification</h2>
             <div><label><input type="checkbox" onchange="checkChecklistCompletion('teacher')"> J'ai vérifié l'exactitude des informations utilisées dans mon matériel de cours.</label></div>
@@ -54,15 +59,22 @@
             <h2><i class="fas fa-file-alt"></i> 7. Générer la déclaration</h2>
             <button id="generate-btn-teacher" onclick="generateOutputs('teacher')" disabled><i class="fas fa-cogs"></i> Générer</button>
             <div class="output-container">
-                <div class="output-header"><h3>Déclaration pour plan de cours ou tout autre document pédagogique (par exemple, présentation, feuille de consignes, grilles d’évaluation, etc.)</h3><button class="copy-btn" onclick="copyToClipboard('output-teacher', this)">Copier</button></div>
-                <textarea id="output-teacher" class="output-textarea" readonly></textarea>
+                <div class="output-header"><h3>Déclaration pour document pédagogique (plan, présentation, etc.)</h3><button class="copy-btn" onclick="copyToClipboard('output-teacher', this)">Copier</button></div>
+                <textarea id="output-teacher" class="output-textarea" readonly></textarea> 
             </div>
             <div class="output-container">
                 <div class="output-header"><h3>Références </h3><button class="copy-btn" onclick="copyToClipboard('bibliography-output-teacher', this)">Copier</button></div>
                 <textarea id="bibliography-output-teacher" class="output-textarea" readonly></textarea>
+
             </div>
+
         </div>
+<footer>
+            <p>Ressource en développement | version 2.0 | Alexandra lez, alexandra.lez@usherbrooke.ca | septembre 2025</p>
+        </footer>
     </div>
-    <script src="script.js"></script>
+        <script src="script.js"></script>
+
 </body>
+
 </html>
