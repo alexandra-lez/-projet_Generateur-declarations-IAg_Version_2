@@ -205,7 +205,7 @@ function buildSansBalisesPredefinedTasksHTML() {
     if (!container) return;
 
     const title = document.createElement('h4');
-    title.innerHTML = `Pistes d'usages courants (cochez une option ou ajouter un usage) :`;
+    title.innerHTML = `Pistes d'usages courants (Cochez les cases appropriées ou indiquez un usage non répertorié.) :`;
     container.appendChild(title);
     
     // On utilise la fonction createTaskItem existante pour créer des éléments interactifs
