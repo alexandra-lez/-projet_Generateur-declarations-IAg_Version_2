@@ -369,8 +369,8 @@ function getReflectionText(profile) {
     return text;
 }
 function getIntegrityText(profile) {
-    const text = (profile === 'teacher') ? `l'enseignant(e) confirme (information à venir).`
-               : (profile === 'researcher') ? `le chercheur ou la chercheuse confirme (information à venir).`
+    const text = (profile === 'teacher') ? `l'enseignant(e) confirme avoir respecté les consignes d'usages des outils d'IAg et assume l'entière responsabilité du contenu final.`
+               : (profile === 'researcher') ? `le chercheur ou la chercheuse confirme avoir respecté les consignes d'usages des outils d'IAg et assume l'entière responsabilité du contenu final.`
                : `l'étudiant(e) confirme avoir respecté les consignes d'usages des outils d'IAg et assume l'entière responsabilité du contenu final.`;
     return `\nENGAGEMENT D'INTÉGRITÉ\n----------------------\nEn générant cette déclaration, ${text}`;
 }
