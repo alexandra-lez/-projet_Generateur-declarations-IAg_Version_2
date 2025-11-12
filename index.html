@@ -4,54 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prototype - Générateur de déclaration d'utilisation d'IAg</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Lien Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    
+    <!-- 
+      Styles CSS maintenant dans un fichier séparé 
+    -->
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <div id="main-container">
 
-<div class="language-selector">
-    <a href="index.html" title="Français">
-        <img src="https://hatscripts.github.io/circle-flags/flags/fr.svg" width="32" alt="Français">
-    </a>
-    <a href="#" title="English">
-        <img src="https://hatscripts.github.io/circle-flags/flags/gb.svg" width="32" alt="English">
-    </a>
-    <a href="#" title="Español">
-        <img src="https://hatscripts.github.io/circle-flags/flags/es.svg" width="32" alt="Español">
-    </a>
-</div>
+        <div class="language-selector">
+            <a href="index.html" title="Français" class="lang-link lang-active">FR</a>
+            <a href="#" title="English" class="lang-link">EN</a>
+            <a href="#" title="Español" class="lang-link">ES</a>
+        </div>
 
         <div id="profile-selection-view">
-            <h1>Prototype - Générateur de déclaration d'utilisation d'IAg</h1>
-            <p class="helper-text" style="text-align: left; margin-bottom: 2rem;">
-                ATTENTION - VERSION DE TRAVAIL. Ce générateur est conçu pour vous soutenir dans la déclaration d'utilisation d’outils d'Intelligence artificielle générative (IAg) de manière transparente et éthique, que vous soyez une personne enseignante, chercheuse ou étudiante.
-                Licence, mentions légales et autres informations à venir.
-            </p>
+            
+            <h1>Générateur de déclaration d'utilisation d'IAg</h1>
+            
+            <!-- 
+                "À PROPOS" 
+                Placée ici comme sous-titre pour donner le contexte.
+            -->
+
+ <!-- 
+                BOÎTE D'AVERTISSEMENT (Simplifiée)
+                Ne contient que l'avertissement "Version de travail".
+            -->
+            <div class="warning-box">
+                <i class="fas fa-triangle-exclamation"></i>
+                <div>
+                    <strong>ATTENTION - Version 3.0 pour révision et ajustement.</strong>
+                </div>
+            </div>
+
+<p>Cet outil (prototype) a été conçu pour vous aider à rédiger et à présenter une déclaration transparente sur l’utilisation de l’intelligence artificielle générative (IAg). Avant de l'utiliser, veuillez lire la section « Mode d'emploi et points importants »</p>
+
+            <!-- 
+                NOUVEAU BOUTON
+                Ce bouton ouvrira la fenêtre modale avec les détails.
+            -->
+            <div class="modal-button-container">
+                <button id="open-about-modal">
+                    <i class="fas fa-book-open"></i>
+                    Mode d'emploi et points importants
+                </button>
+            </div>
+            
+           
             <h2><i class="fas fa-user-check"></i> Choisissez votre profil</h2>
+            
             <div class="profile-cards">
                 <a href="enseignant.html" class="profile-card">
                     <div class="profile-icon"><i class="fas fa-chalkboard-user"></i></div>
                     <h3>Personne enseignante</h3>
-                    <p>Documentez et déclarez vos usages d’outils d’IAg dans le cadre de vos activités d’enseignement (par exemple, révision, préparation de document, conception d’activités pédagogiques, etc.)</p>
-                </a>
-                 <a href="recherche.html" class="profile-card">
-                    <div class="profile-icon"><i class="fas fa-magnifying-glass"></i></div>
-                    <h3>Personne chercheuse</h3>
-                    <p>Documentez et déclarez l'utilisation de l'IAg dans vos projets de recherche selon la taxonomie GAIDeT.</p>
+                    <p>Documentez et déclarez vos usages d’outils d’IAg dans vos activités d’enseignement.</p>
                 </a>
                 <a href="etudiant-balise.html" class="profile-card">
                     <div class="profile-icon"><i class="fas fa-user-pen"></i></div>
                     <h3>Personne étudiante<br></h3>
-                    <p>Documentez et déclarez vos usages d’outils d’IAg dans le cadre de vos activités d'apprentissage (par exemple, synthèse, révision de textes, aide à la rédaction, etc.)</p>
+                    <p>Documentez et déclarez vos usages d’outils d’IAg dans vos activités d'apprentissage.</p>
+                </a>
+                <a href="recherche.html" class="profile-card">
+                    <div class="profile-icon"><i class="fas fa-magnifying-glass"></i></div>
+                    <h3>Personne chercheuse</h3>
+                    <p>Documentez et déclarez l'utilisation de l'IAg dans vos projets de recherche selon la taxonomie GAIDeT.</p>
                 </a>
             </div>
 
-        </div>
-<footer>
-            <p>Ressource en développement | version 2.0 | Alexandra lez, alexandra.lez@usherbrooke.ca | septembre 2025</p>
+        </div> <!-- Fin de #profile-selection-view -->
+
+        <footer>
+            <p>Ressource en développement | version 3.0 | octobre 2025 | alexandra.lez@usherbrooke.ca</p>
         </footer>
+    </div> <!-- Fin de #main-container -->
+
+
+    <!-- 
+      ******************************************************
+      NOUVELLE FENÊTRE MODALE (MODERNE)
+      Contenu de 'about.html' réintégré ici.
+      ******************************************************
+    -->
+    <div id="about-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" id="close-about-modal">&times;</span>
+
+            <h2><i class="fas fa-lightbulb"></i>À propos de l'outil</h2>
+            <p>
+              Cet outil (prototype) a été conçu pour vous aider à rédiger et à présenter une déclaration transparente sur l’utilisation de l’intelligence artificielle générative (IAg). Il vise également un objectif pédagogique en vous incitant à explorer les implications et les limites de cette technologie. À chaque étape, sans interférer dans votre déclaration, nous vous proposons des recommandations et des points de vigilance. Ces informations sont optionnelles : vous pouvez y accéder librement, selon vos besoins et intérêts.</p>
+
+
+            <h2><i class="fas fa-book-open"></i>Mode d'emploi</h2>
+            <ol>
+                <li>Sélectionnez votre profil (personne enseignante, étudiante ou chercheuse).</li>
+                <li>Remplissez les champs en précisant les informations sur les tâches, les outils et les usages déclarés.</li>
+                <li>Complétez la liste de vérification.</li>
+                <li>Générez et récupérez la déclaration pour l'intégrer à votre travail.</li>
+            </ol>
+
+            <h2><i class="fas fa-exclamation-circle"></i>Points importants et limites</h2>
+            <p>Veuillez prendre connaissance des points suivants avant d'utiliser l'outil :</p>
+            <ul>
+                <li>Vous demeurez l'unique responsable de l'exactitude des informations, de la vérification des sources et du contenu final de votre travail.</li>
+                <li>Cet outil est une aide. Il ne se substitue pas et ne remplace <strong>jamais</strong> les directives spécifiques de votre personne enseignante, de votre établissement ou de votre direction de recherche.</li>
+                <li>Cette interface ne demande aucun enregistrement et ne conserve (ne persiste) <strong>aucune</strong> des informations que vous saisissez.</li>
+            </ul>
+        </div>
     </div>
+
+
+    <script>
+        // --- NOUVEAU SCRIPT POUR LA FENÊTRE MODALE MODERNE ---
+        
+        // 1. Récupérer les éléments du DOM
+        const modalOverlay = document.getElementById('about-modal');
+        const openModalBtn = document.getElementById('open-about-modal');
+        const closeModalBtn = document.getElementById('close-about-modal');
+
+        // 2. Fonction pour ouvrir la modale
+        function openModal() {
+            if (modalOverlay) modalOverlay.style.display = 'flex';
+        }
+
+        // 3. Fonction pour fermer la modale
+        function closeModal() {
+            if (modalOverlay) modalOverlay.style.display = 'none';
+        }
+
+        // 4. Attacher les événements
+        if (openModalBtn) openModalBtn.addEventListener('click', openModal);
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+
+        // 5. Fermer la modale si on clique en dehors de la boîte
+        window.addEventListener('click', (event) => {
+            if (event.target == modalOverlay) {
+                closeModal();
+            }
+        });
+
+
+        // --- Votre script existant pour l'effet 3D ---
+        document.querySelectorAll('.profile-card').forEach(card => {
+            const maxRotate = 15; // Angle de rotation max en degrés
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const { width, height } = rect;
+                
+                const rotateX = (maxRotate * (y / height - 0.5) * -2).toFixed(2); // Rotation sur l'axe X
+                const rotateY = (maxRotate * (x / width - 0.5) * 2).toFixed(2);  // Rotation sur l'axe Y
+                
+                card.style.setProperty('--rotate-x', `${rotateX}deg`);
+                card.style.setProperty('--rotate-y', `${rotateY}deg`);
+                card.style.transition = 'transform 0.05s linear'; // Suivi rapide
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.setProperty('--rotate-x', '0deg');
+                card.style.setProperty('--rotate-y', '0deg');
+                card.style.transition = 'transform 0.4s ease-out'; // Retour fluide
+            });
+        });
+    </script>
 
 </body>
 </html>
