@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. Variables de couleur et configuration globale - Version prototype 2.0
+   1. Variables de couleur et configuration globale - Version prototype 3.0
    ========================================================================== */
 
 :root {
@@ -15,17 +15,17 @@
   --accent-light-bg: #FEF9E7; /* Fond pour les astuces */
 
   /* Palette de texte et de fond */
-  --text-color: #2c3e50;      /* Gris ardoise */
-  --text-light: #7f8c8d;      /* Gris clair */
+  --text-color: #2c3e50;     /* Gris ardoise */
+  --text-light: #7f8c8d;     /* Gris clair */
   --bg-color: #f9fbfd;
   --card-bg: rgba(255, 255, 255, 0.85); /* Fond légèrement transparent pour l'effet aurora */
-  
+   
   /* Couleurs neutres et d'état */
-  --border-color: #ecf0f1;    /* Gris très clair */
-  --danger-color: #D97706;    /* Ambre pour les avertissements (remplace le rouge) */
+  --border-color: #ecf0f1;     /* Gris très clair */
+  --danger-color: #D97706;     /* Ambre pour les avertissements (remplace le rouge) */
   --danger-light-bg: #FFFBEB; /* Fond clair pour le survol du danger */
-  
-  /* Ombres améliorées */
+   
+  /* Ombres */
   --shadow-light: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
   --shadow-medium: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-large: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
@@ -36,7 +36,7 @@
   --font-heading: 'Montserrat', sans-serif;
   --font-code: 'Source Code Pro', monospace;
 
-  /* Transitions & Rayons */
+  /* Transitions et rayons */
   --transition-fast: all 0.2s ease-in-out;
   --transition-medium: all 0.3s ease-in-out;
   --border-radius-small: 8px;
@@ -119,14 +119,16 @@ body {
   max-width: 980px;
   margin: 2rem 0;
   padding: 3rem 4rem;
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
+  /* Ajouté V.3 : Effet glassmorphism */
+  background-color: rgba(255, 255, 255, 0.9); /* Plus opaque pour la lisibilité */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Bordure "verre" */
   border-radius: var(--border-radius-large);
   box-shadow: var(--shadow-large);
   position: relative;
   overflow: hidden;
   animation: fadeInFromTop 0.6s 0.2s ease-out backwards;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px); /* Flou plus prononcé */
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .section {
@@ -144,7 +146,8 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 2.6em;
+  /* Ajouté V.3 : Ajustement du h1  */
+  font-size: 2.8em; /* Légèrement plus grand */
   text-align: center;
   margin: 1rem 0 2.5rem 0;
   letter-spacing: -1px;
@@ -293,7 +296,7 @@ select:focus {
   background-image: linear-gradient(45deg, var(--primary-dark) 0%, var(--primary-color) 100%);
   color: #fff;
   box-shadow: var(--shadow-medium);
-  margin-top: 1.5rem; /* Maintenu pour la compatibilité avec le style d'origine */
+  margin-top: 1.5rem; /* Maintenu pour la compatibilité avec le style */
 }
 
 .btn--primary::after {
@@ -423,7 +426,7 @@ button:disabled {
    7. Composants spécifiques
    ========================================================================== */
 
-/* --- Conteneur de Sortie --- */
+/* --- Conteneur de sortie --- */
 .output-container {
   margin-top: 2.5rem;
   position: relative;
@@ -437,7 +440,7 @@ button:disabled {
   border: 1px solid var(--border-color);
   border-bottom: none;
   border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
-  /* Effet Glassmorphism */
+  /* Effet glassmorphism */
   background-color: rgba(241, 243, 245, 0.7);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -501,7 +504,7 @@ details.gaidet-category[open] > summary::before {
   transform: rotate(-180deg);
 }
 
-/* --- Éléments de Tâche et Checklists --- */
+/* --- Éléments de tâche et checklists --- */
 .task-item {
   margin: 1.5rem 0;
   padding-left: 1.5rem;
@@ -544,6 +547,34 @@ details.gaidet-category[open] > summary::before {
   padding: 1.2rem;
   border-radius: var(--border-radius-medium);
   border-left: 5px solid var(--primary-color);
+}
+
+/* Version 3 : Style pour le nouveau bandeau d'avertissement */
+.warning-box {
+  display: flex;
+  align-items: center; /* Modifié : centre l'icône verticalement */
+  gap: 1rem;
+  background-color: var(--danger-light-bg);
+  border-left-color: var(--danger-color);
+  color: #6D4C0A; /* Couleur de texte plus foncée pour le fond ambré */
+  margin-bottom: 2.5rem !important; /* Doit être visible */
+  box-shadow: var(--shadow-light); /* Ajouté : donne une légère profondeur */
+  text-align: justify; /* Ajouté : pour justifier le texte */
+}
+
+.warning-box i {
+  font-size: 1.5em;
+  color: var(--danger-color);
+  /* padding-top: 0.25rem; */ /* Supprimé : remplacé par align-items: center */
+  flex-shrink: 0; /* Ajouté : empêche l'icône de s'écraser */
+}
+
+/* Ajouté : style le texte secondaire dans le bandeau */
+.warning-box span {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.9em;
+  opacity: 0.8;
 }
 
 .tip-icon {
@@ -599,7 +630,8 @@ details.gaidet-category[open] > summary::before {
 
 .profile-cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* Correction, v.3 : Passage à auto-fit pour 3 colonnes flexibles. */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2.5rem;
 }
 
@@ -615,14 +647,18 @@ details.gaidet-category[open] > summary::before {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: var(--transition-medium);
+  /* Ajouté V.3 : transformation 3D JS */
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
   transform-style: preserve-3d;
+  /* Initialisation des variables pour le JS */
+  transform: rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg));
 }
 
 .profile-card:hover {
   box-shadow: var(--shadow-large);
   border-color: var(--primary-color);
-  transform: rotateY(var(--rotate-y, 0)) rotateX(var(--rotate-x, 0)) translateY(-8px);
+  /* Ajouté V.3 : Effet au survol */
+  transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) translateY(-8px) translateZ(30px);
 }
 
 @keyframes float {
@@ -637,19 +673,22 @@ details.gaidet-category[open] > summary::before {
   margin: 0 auto 1.5rem auto;
   font-size: 3em;
   color: #fff;
-  background-image: linear-gradient(45deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+  /* Ajouté V.3: Gradient pour l'icône */
+  background-image: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 70%, var(--primary-light) 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
   box-shadow: var(--shadow-medium);
-  animation: float 4s ease-in-out infinite;
+  /* Supprimé : animation: float 4s ease-in-out infinite; */
+  /* Assure que l'icône est "au-dessus" de la carte en 3D */
+  transform: translateZ(40px);
 }
 
 .profile-card:hover .profile-icon {
-  transform: scale(1.1) rotate(5deg);
-  animation-play-state: paused;
+  transform: scale(1.1) rotate(5deg) translateZ(40px);
+  /* Supprimé : animation-play-state: paused; */
 }
 
 .profile-card h3 {
@@ -657,6 +696,8 @@ details.gaidet-category[open] > summary::before {
   margin: 0 0 0.5rem 0;
   border: none;
   font-size: 1.25em;
+  /* Assure que le texte est au-dessus de la carte en 3D */
+  transform: translateZ(20px);
 }
 
 .profile-card p {
@@ -664,6 +705,8 @@ details.gaidet-category[open] > summary::before {
   line-height: 1.5;
   color: var(--text-light);
   margin: 0;
+  /* Assure que le texte est au-dessus de la carte en 3D */
+  transform: translateZ(10px);
 }
 
 .back-link {
@@ -715,8 +758,17 @@ details.gaidet-category[open] > summary::before {
 }
 
 /* ==========================================================================
-   9. Requêtes média 
+   9. Requêtes 
    ========================================================================== */
+
+@media (max-width: 940px) {
+  /* Version 3 : Fait passer les cartes à 1 colonne */
+  .profile-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 
 @media (max-width: 768px) {
   body {
@@ -735,22 +787,19 @@ details.gaidet-category[open] > summary::before {
   h2 {
     font-size: 1.5em;
   }
-  
+   
   h3 {
     font-size: 1.2em;
   }
 
-  .profile-cards {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
+  /* La grille est déjà à 1fr grace à @940px */
 }
 
 @media (max-width: 480px) {
   body {
       padding: 0.5rem;
   }
-  
+   
   #main-container {
     padding: 1.5rem 1rem;
   }
@@ -769,21 +818,49 @@ details.gaidet-category[open] > summary::before {
     top: 1.5rem;
     right: 1.5rem;
     display: flex;
-    gap: 0.75rem;
+    gap: 0.75rem; /* Augmenté légèrement pour le | */
+    align-items: center; /* Ajouté : pour bien aligner le texte */
 }
 
 .language-selector a {
-    /* On supprime la taille de la police car on utilise des images */
     text-decoration: none;
-    transition: transform 0.2s ease-in-out;
-    display: inline-block; /* Important pour que la transformation fonctionne bien */
+    transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out; /* Ajout de l'opacité */
+    display: inline-block; 
+    
+    /* --- Modif version 3 : Suppression du style "pilule" --- */
+    font-family: var(--font-heading);
+    font-weight: 500; /* Changé : poids de base */
+    font-size: 1em; /* Changé : taille de texte standard */
+    color: var(--text-light);
+    opacity: 0.6; /* Ajouté V.3 : Rendre les inactifs semi-transparents */
 }
 
 .language-selector a:hover {
-    transform: scale(1.2);
+    color: var(--primary-dark); /* Changé : devient plus foncé au survol */
+    transform: none; /* Ajouté : annule tout effet de transformation résiduel */
+    opacity: 1; /* Ajouté V.3 : Pleine opacité au survol */
 }
 
-/* On s'assure que les images sont bien alignées verticalement */
+/* Modif. version 3 : Style pour la langue active (texte seulement) */
+.language-selector a.lang-active {
+    color: var(--primary-dark); /* Changé : couleur foncée pour l'actif */
+    font-weight: 700; /* Ajouté : en gras pour l'actif */
+    opacity: 1; /* Ajouté V.3 : Assurer la pleine opacité */
+    background-color: transparent; /* Ajouté : assurer la transparence */
+    border: none; /* Ajouté : assurer l'absence de bordure */
+    box-shadow: none; /* Ajouté : assurer l'absence d'ombre */
+}
+
+/* Modif. version 3 : Remplacement du point par un | */
+.language-selector a:not(:last-child)::after {
+    content: '|'; /* Changé */
+    color: var(--border-color); /* Changé : Couleur très claire (gris pâle) */
+    margin-left: 0.75rem; /* Ajusté */
+    pointer-events: none; 
+    font-weight: 300; /* Ajouté V.3 : Rendre le | plus fin */
+}
+
+
 .language-selector img {
     vertical-align: middle;
 }
@@ -792,7 +869,133 @@ footer {
     text-align: center;
     margin-top: 3rem;
     padding-top: 1.5rem;
-    border-top: 1px solid #ddd;
+    /* Ajouté V.3 : Séparation visuelle et style de texte */
+    border-top: 1px solid var(--border-color);
     font-size: 0.9em;
-    color: #777;
+    color: var(--text-light);
+}
+
+/* --- Boîtes de message  --- */
+.helper-text {
+[Immersive content redacted for brevity.]
+    border-radius: var(--border-radius-medium);
+    border-left: 5px solid var(--primary-color);
+}
+
+/* AJOUT : Style pour les liens dans les boîtes d'aide */
+.helper-text a,
+.helper-text a:visited {
+    color: var(--primary-dark); /* Couleur vert foncé */
+    font-weight: 700;
+    text-decoration: underline;
+    transition: var(--transition-fast);
+}
+
+.helper-text a:hover {
+    color: var(--primary-color); /* S'éclaircit au survol */
+    text-decoration: none;
+}
+
+
+.tip-icon {
+[Immersive content redacted for brevity.]
+}
+
+/* ==========================================================================
+   10. STYLES POUR LA FENÊTRE MODALE MODERNE
+   ========================================================================== */
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomInModal {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-overlay {
+  display: none; /* Caché par défaut */
+  position: fixed; /* Reste en place même si on défile */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65); /* Fond sombre semi-transparent */
+  z-index: 1000;
+  
+  /* Utilise flexbox pour centrer le contenu verticalement et horizontalement */
+  /* Le script JS change 'display' en 'flex' */
+  align-items: center;
+  justify-content: center;
+  
+  padding: 1rem; /* Un peu d'espace sur mobile */
+  animation: fadeInModal 0.3s ease-out;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 900px; /* Augmenté de 800px à 900px */
+  max-height: 95vh; /* Augmenté de 90vh à 95vh */
+  overflow-y: auto; /* Ajoute une barre de défilement si le contenu dépasse */
+  
+  padding: 2.5rem 3rem;
+  background-color: #fff;
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-large);
+  position: relative;
+  font-family: var(--font-body);
+  color: var(--text-color);
+  line-height: 1.7;
+  
+  animation: zoomInModal 0.3s ease-out;
+}
+
+.modal-content h2 {
+    font-family: var(--font-heading);
+    color: var(--primary-dark);
+    margin-top: 0;
+    font-size: 1.8em;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 1.5rem;
+}
+
+.modal-content h2::after {
+    display: none;
+}
+
+.modal-content p.emphasis {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.modal-content ol, .modal-content ul {
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-content li {
+    margin-bottom: 0.75rem;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--text-light);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+    color: var(--text-color);
 }
